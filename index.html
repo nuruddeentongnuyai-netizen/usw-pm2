@@ -1,9 +1,94 @@
-<nav>
-    <ul>
-        <li><a href="#home">หน้าแรก</a></li>
-        <li><a href="#features">คุณสมบัติ</a></li>
-        <li><a href="#products">สินค้าของเรา</a></li>
-        <li><a href="#contact">ติดต่อเรา</a></li>
-        <li><a href="login.html" class="btn-login" style="background:#0077b6; color:#fff; padding:5px 15px; border-radius:4px;">เข้าสู่ระบบ</a></li>
-    </ul>
-</nav>
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoPure | นวัตกรรมเครื่องบำบัดน้ำเสียอัจฉริยะ</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">EcoPure</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">หน้าแรก</a></li>
+                    <li><a href="#features">คุณสมบัติ</a></li>
+                    <li><a href="#products">สินค้าของเรา</a></li>
+                    <li><a href="#contact">ติดต่อเรา</a></li>
+                    <li><a href="login.html" style="background:#0077b6; color:#fff; padding:5px 15px; border-radius:4px; text-decoration:none;">เข้าสู่ระบบ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>เทคโนโลยีบำบัดน้ำเสีย เพื่ออนาคตที่ยั่งยืน</h1>
+            <p>เครื่องบำบัดน้ำเสียประสิทธิภาพสูง ประหยัดพลังงาน เหมาะสำหรับโรงงานอุตสาหกรรมและชุมชน</p>
+            <a href="#contact" class="btn">ขอคำปรึกษาฟรี</a>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2>ทำไมต้องเลือก EcoPure?</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>กรองละเอียด 3 ชั้น</h3>
+                    <p>ระบบบำบัดแบบผสมผสาน กรองตะกอน กลิ่น และสารเคมีได้อย่างหมดจด</p>
+                </div>
+                <div class="card">
+                    <h3>ประหยัดพลังงาน</h3>
+                    <p>ใช้มอเตอร์และระบบหมุนเวียนอากาศอัจฉริยะ ลดค่าไฟได้ถึง 30%</p>
+                </div>
+                <div class="card">
+                    <h3>เป็นมิตรต่อสิ่งแวดล้อม</h3>
+                    <p>น้ำที่ผ่านการบำบัดได้มาตรฐานกรมควบคุมมลพิษ พร้อมนำกลับมาหมุนเวียนใช้ใหม่</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="products">
+        <div class="container">
+            <h2>รุ่นสินค้าที่แนะนำ</h2>
+            <div class="grid">
+                <div class="product-item">
+                    <h3>Eco-Mini (สำหรับครัวเรือน)</h3>
+                    <p>รองรับการบำบัด 500 ลิตร/วัน ขนาดกะทัดรัด ติดตั้งง่าย</p>
+                </div>
+                <div class="product-item">
+                    <h3>Eco-Pro (สำหรับร้านอาหาร/คาเฟ่)</h3>
+                    <p>รองรับการบำบัด 2,000 ลิตร/วัน มีระบบดักไขมันประสิทธิภาพสูง</p>
+                </div>
+                <div class="product-item">
+                    <h3>Eco-Industrial (สำหรับโรงงาน)</h3>
+                    <p>ระบบขนาดใหญ่ ออกแบบตามโครงสร้างและประเภทน้ำเสียของโรงงาน</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>ติดต่อฝ่ายขายและผู้เชี่ยวชาญ</h2>
+            <p>ยินดีให้คำปรึกษาและสำรวจหน้างานฟรีทั่วประเทศ</p>
+            <form action="#" method="POST" class="contact-form">
+                <input type="text" placeholder="ชื่อของคุณ" required>
+                <input type="email" placeholder="อีเมล" required>
+                <input type="tel" placeholder="เบอร์โทรศัพท์" required>
+                <textarea placeholder="รายละเอียดที่ต้องการสอบถาม" rows="5" required></textarea>
+                <button type="submit" class="btn">ส่งข้อความ</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 EcoPure Water Tech. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
