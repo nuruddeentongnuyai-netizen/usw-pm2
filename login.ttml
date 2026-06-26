@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เข้าสู่ระบบ | EcoPure</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ดีไซน์เฉพาะหน้า Login */
+        .login-body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #0077b6, #2d6a4f);
+        }
+        .login-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .login-card h2 { margin-bottom: 20px; }
+        .error-msg { color: red; font-size: 14px; margin-bottom: 10px; display: none; }
+    </style>
+</head>
+<body class="login-body">
+
+    <div class="login-card">
+        <h2>EcoPure Login</h2>
+        <p style="margin-bottom: 20px; color: #666;">สำหรับเจ้าหน้าที่ / สมาชิกระบบบำบัดน้ำเสีย</p>
+        
+        <div id="error-box" class="error-msg">ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง</div>
+
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="ชื่อผู้ใช้ (admin)" required style="width:100%; padding:12px; margin-bottom:15px; border:1px solid #ccc; border-radius:5px;">
+            <input type="password" id="password" placeholder="รหัสผ่าน (1234)" required style="width:100%; padding:12px; margin-bottom:20px; border:1px solid #ccc; border-radius:5px;">
+            <button type="submit" class="btn" style="width: 100%;">เข้าสู่ระบบ</button>
+        </form>
+        
+        <p style="margin-top: 20px;"><a href="index.html" style="color: #0077b6; text-decoration: none;">← กลับหน้าแรก</a></p>
+    </div>
+
+    <script>
+        // ระบบจำลองการล็อกอิน (เนื่องจาก GitHub Pages ไม่มีฐานข้อมูลหลังบ้าน)
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // ป้องกันหน้าเว็บรีเฟรช
+            
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            const errorBox = document.getElementById('error-box');
+
+            // ตั้งค่า Username: admin / Password:  1234
+            if (user === 'admin' && pass === '1234') {
+                errorBox.style.display = 'none';
+                // บันทึกสถานะว่าล็อกอินแล้วลงใน Browser
+                localStorage.setItem('isLoggedIn', 'true');
+                // ลิงก์ไปหน้า Dashboard
+                window.location.href = 'dashboard.html';
+            } else {
+                errorBox.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
