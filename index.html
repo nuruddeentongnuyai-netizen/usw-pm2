@@ -14,25 +14,17 @@
 
     <!-- Header -->
     <header class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-blue-800">EcoPure</div>
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="text-xl md:text-2xl font-bold text-blue-800">EcoPure</div>
             
-            <!-- Hamburger Button - แสดงเฉพาะมือถือ -->
-            <button id="menu-btn" class="md:hidden p-2 text-blue-800 border border-blue-800 rounded">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
-
-            <!-- เมนูหลัก -->
-            <nav id="mobile-menu" class="hidden md:flex md:items-center space-x-6 absolute md:static top-16 left-0 w-full bg-white p-6 md:p-0 shadow-lg md:shadow-none z-40 text-center">
-                <div class="flex flex-col md:flex-row gap-4 md:gap-6 items-center w-full">
-                    <a href="index.html" class="font-bold text-blue-700">หน้าแรก</a>
-                    <a href="#" class="hover:text-blue-600">คุณสมบัติ</a>
-                    <a href="#" class="hover:text-blue-600">สินค้าของเรา</a>
-                    <a href="contact.html" class="hover:text-blue-600">ติดต่อเรา</a>
-                    <a href="login.html" class="bg-blue-800 text-white px-6 py-2 rounded-lg hover:bg-blue-900 transition">เข้าสู่ระบบ</a>
-                </div>
+            <!-- Navigation Menu -->
+            <nav class="flex items-center space-x-3 md:space-x-6 text-sm md:text-base">
+                <a href="index.html" class="font-bold text-blue-700">หน้าแรก</a>
+                <a href="#" class="hover:text-blue-600 hidden sm:block">คุณสมบัติ</a>
+                <a href="#" class="hover:text-blue-600 hidden sm:block">สินค้า</a>
+                <a href="contact.html" class="hover:text-blue-600">ติดต่อ</a>
+                <a href="login.html" class="bg-blue-800 text-white px-3 py-1.5 md:px-6 md:py-2 rounded-lg hover:bg-blue-900 transition text-xs md:text-base">เข้าสู่ระบบ</a>
             </nav>
         </div>
     </header>
@@ -49,13 +41,5 @@
         </div>
     </main>
 
-    <script>
-        const btn = document.getElementById('menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-    </script>
 </body>
 </html>
