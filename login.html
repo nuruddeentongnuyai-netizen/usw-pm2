@@ -124,9 +124,6 @@
             
         }
 
-     window.location.href = "index.html";
-}
-
 function checkLogin() {
     var user = document.getElementById("username").value;
     var pass = document.getElementById("password").value;
@@ -163,14 +160,12 @@ function forgotPassword() {
 }
 
 function logout() {
-
-        function logout() {
-            document.getElementById("username").value = "";
-            document.getElementById("password").value = "";
-            document.getElementById("errorMsg").style.display = "none";
-            document.getElementById("loginSection").style.display = "block";
-            document.getElementById("dashboardSection").style.display = "none";
-        }
-    </script>
+    document.getElementById("username").value = "";
+    document.getElementById("password").value = "";
+    document.getElementById("errorMsg").style.display = "none";
+    document.getElementById("loginSection").style.display = "block";
+    document.getElementById("dashboardSection").style.display = "none";
+}
+</script>
 </body>
 </html>
