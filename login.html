@@ -112,27 +112,6 @@
             text-align: center;
             line-height: 1.5;
         }
-
-        #dashboardSection {
-            display: none;
-            text-align: center;
-        }
-
-        .welcome-box {
-            background: #f0fdf4;
-            border: 2px solid #bbf7d0;
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-        }
-
-        .btn-logout {
-            background: #ef4444;
-        }
-
-        .btn-logout:hover {
-            background: #dc2626;
-        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -191,15 +170,6 @@
                 </div>
             </div>
         </div>
-
-        <div id="dashboardSection">
-            <div class="welcome-box">
-                <i class="fas fa-check-circle" style="font-size: 3rem; color: #22c55e; margin-bottom: 15px;"></i>
-                <h2>ยินดีต้อนรับเข้าสู่ระบบ</h2>
-                <p style="margin-top: 10px; color: #64748b;">คุณ: <span id="userDisplay" style="font-weight: bold; color: #2563eb;">-</span></p>
-            </div>
-            <button class="btn-logout" onclick="logout()">ออกจากระบบ</button>
-        </div>
     </div>
 
     <script>
@@ -229,7 +199,6 @@
                 return;
             }
 
-            // บันทึกข้อมูลถาวร และตัดช่องว่างออกทั้งหมด
             localStorage.setItem("storedUser", newUser);
             localStorage.setItem("storedPass", newPass);
             localStorage.setItem("storedName", fullName);
@@ -249,10 +218,16 @@
             var localName = localStorage.getItem("storedName");
             
             if((user === "admin" && pass === "1234") || (localUser && user === localUser && pass === localPass)) {
-                document.getElementById("loginSection").style.display = "none";
-                document.getElementById("dashboardSection").style.display = "block";
-                document.getElementById("userDisplay").innerText = user === "admin" ? "ผู้ดูแลระบบสูงสุด" : localName;
-                document.getElementById("errorMsg").style.display = "none";
+                var displayName = user === "admin" ? "ผู้ดูแลระบบสูงสุด" : localName;
+                
+                // บันทึกสถานะว่าล็อกอินสำเร็จแล้วลงเครื่อง เผื่อหน้าอื่นอยากเอาไปใช้
+                localStorage.setItem("isLoggedIn", "true");
+                localStorage.setItem("currentUser", displayName);
+                
+                alert("🎉 เข้าสู่ระบบสำเร็จ ยินดีต้อนรับคุณ " + displayName);
+                
+                // 🚀 ล็อกอินผ่านแล้วให้ดีดไปหน้าแรก (index.html) ทันที ข้อมูลไม่ค้างหน้าจอสีเขียวแล้ว
+                window.location.href = "index.html"; 
             } else {
                 document.getElementById("errorMsg").innerHTML = `
                     ❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง <br>
@@ -280,14 +255,6 @@
             } else {
                 alert("❌ ไม่พบชื่อผู้ใช้งานนี้ในระบบ กรุณาตรวจสอบการสะกดอีกครั้งครับ");
             }
-        }
-
-        function logout() {
-            document.getElementById("username").value = "";
-            document.getElementById("password").value = "";
-            document.getElementById("errorMsg").style.display = "none";
-            document.getElementById("loginSection").style.display = "block";
-            document.getElementById("dashboardSection").style.display = "none";
         }
     </script>
 </body>
