@@ -3,57 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoPure | นวัตกรรมเครื่องบำบัดน้ำเสียอัจฉริยะ</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>EcoPure - เข้าสู่ระบบ</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { font-family: 'Sarabun', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Prompt', sans-serif; }
+        body { background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+        .container { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 450px; }
+        .logo { text-align: center; margin-bottom: 30px; color: #1e3a8a; font-size: 2.2rem; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .input-group { margin-bottom: 20px; position: relative; }
+        .input-group i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #94a3b8; }
+        .input-group input { width: 100%; padding: 15px 12px 15px 45px; border: 2px solid #e2e8f0; border-radius: 10px; outline: none; font-size: 1rem; transition: all 0.3s; background-color: #f8fafc; }
+        .input-group input:focus { border-color: #1d4ed8; background-color: #fff; }
+        button { width: 100%; padding: 14px; background: #1e40af; color: white; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: background 0.3s; }
+        button:hover { background: #1d4ed8; }
+        .switch-form { text-align: center; margin-top: 25px; color: #64748b; }
+        .switch-form a { color: #1d4ed8; text-decoration: underline; font-weight: bold; }
+        .error-msg { color: #ef4444; background: #fee2e2; padding: 12px; border-radius: 8px; margin-bottom: 20px; display: none; font-size: 0.95rem; text-align: center; line-height: 1.5; }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-<body class="bg-white text-gray-900">
+<body>
 
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-blue-800">EcoPure</div>
-            <nav class="hidden md:flex space-x-6 items-center">
-                <a href="index.html" class="font-bold text-blue-700">หน้าแรก</a>
-                <a href="features.html" class="hover:text-blue-700">คุณสมบัติ</a>
-                <a href="products.html" class="hover:text-blue-700">สินค้าของเรา</a>
-                <a href="contact.html" class="hover:text-blue-700">ติดต่อเรา</a>
-                <a href="#" class="px-5 py-2 bg-blue-900 text-white rounded-lg hover:bg-blue-800 transition">เข้าสู่ระบบ</a>
-            </nav>
+    <div class="container">
+        <div id="loginSection">
+            <div class="logo"><i class="fas fa-leaf" style="color: #2563eb;"></i> EcoPure</div>
+            <div id="errorMsg" class="error-msg">❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง</div>
+            <div id="regErrorMsg" class="error-msg">❌ กรุณากรอกข้อมูลให้ครบถ้วน และรหัสผ่านต้องตรงกัน</div>
+
+            <div id="loginForm">
+                <h2 style="margin-bottom: 25px; text-align: center; color: #1e3a8a; font-weight: 600;">เข้าสู่ระบบผู้ดูแลระบบ</h2>
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" placeholder="ชื่อผู้ใช้งาน">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" placeholder="รหัสผ่าน">
+                </div>
+                <button onclick="checkLogin()">เข้าสู่ระบบ</button>
+                <div class="switch-form">ยังไม่มีบัญชีผู้ใช้? <a href="#" onclick="showRegister()">สมัครผู้ใช้ใหม่ที่นี่</a></div>
+            </div>
+
+            <div id="registerForm" style="display: none;">
+                <h2 style="margin-bottom: 25px; text-align: center; color: #1e3a8a; font-weight: 600;">สมัครสมาชิกใหม่</h2>
+                <div class="input-group"><i class="fas fa-id-card"></i><input type="text" id="regName" placeholder="ชื่อ-นามสกุล"></div>
+                <div class="input-group"><i class="fas fa-envelope"></i><input type="email" id="regEmail" placeholder="อีเมล"></div>
+                <div class="input-group"><i class="fas fa-user-plus"></i><input type="text" id="regUser" placeholder="ตั้งชื่อผู้ใช้งาน"></div>
+                <div class="input-group"><i class="fas fa-lock"></i><input type="password" id="regPass" placeholder="ตั้งรหัสผ่าน"></div>
+                <div class="input-group"><i class="fas fa-key"></i><input type="password" id="regPassConfirm" placeholder="ยืนยันรหัสผ่านอีกครั้ง"></div>
+                <button onclick="handleRegister()">ลงทะเบียน</button>
+                <div class="switch-form">มีบัญชีอยู่แล้ว? <a href="#" onclick="showLogin()">เข้าสู่ระบบ</a></div>
+            </div>
         </div>
-    </header>
+    </div>
 
-    <section class="relative h-[calc(100vh-80px)] flex items-center justify-center text-center px-6">
-        <!-- Background Image: Industrial Factory Setting -->
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&q=80&w=2000" 
-                 alt="Industrial Factory" 
-                 class="w-full h-full object-cover">
-            <!-- Dark Overlay for Readability -->
-            <div class="absolute inset-0 bg-black/60"></div>
-        </div>
-
-        <!-- Content -->
-        <div class="relative z-10 max-w-3xl">
-            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
-                เทคโนโลยีบำบัดน้ำเสีย เพื่ออนาคตที่ยั่งยืน
-            </h1>
-            <p class="text-lg md:text-xl text-gray-200 mb-10">
-                เครื่องบำบัดน้ำเสียประสิทธิภาพสูง ประหยัดพลังงาน เหมาะสำหรับโรงงานอุตสาหกรรมและชุมชน
-            </p>
-            
-            <a href="https://line.me/ti/p/aIH6Ap8MMp" target="_blank" 
-               class="inline-block px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg text-lg shadow-lg transition duration-300">
-                ขอคำปรึกษาฟรี
-            </a>
-        </div>
-    </section>
-
-    <footer class="py-8 bg-gray-100 border-t border-gray-200">
-        <p class="text-center text-gray-600 text-sm">&copy; 2026 EcoPure Water Tech. All Rights Reserved.</p>
-    </footer>
-
+    <script>
+        function showRegister() { document.getElementById("loginForm").style.display = "none"; document.getElementById("registerForm").style.display = "block"; document.getElementById("errorMsg").style.display = "none"; document.getElementById("regErrorMsg").style.display = "none"; }
+        function showLogin() { document.getElementById("registerForm").style.display = "none"; document.getElementById("loginForm").style.display = "block"; document.getElementById("errorMsg").style.display = "none"; document.getElementById("regErrorMsg").style.display = "none"; }
+        function handleRegister() {
+            var fullName = document.getElementById("regName").value.trim();
+            var email = document.getElementById("regEmail").value.trim();
+            var newUser = document.getElementById("regUser").value.trim();
+            var newPass = document.getElementById("regPass").value;
+            var confirmPass = document.getElementById("regPassConfirm").value;
+            if(!fullName || !email || !newUser || !newPass || newPass !== confirmPass) { document.getElementById("regErrorMsg").style.display = "block"; return; }
+            localStorage.setItem("storedUser", newUser); localStorage.setItem("storedPass", newPass); localStorage.setItem("storedName", fullName);
+            alert("🎉 สมัครสมาชิกสำเร็จแล้ว!"); showLogin(); document.getElementById("username").value = newUser; document.getElementById("password").value = "";
+        }
+        function checkLogin() {
+            var user = document.getElementById("username").value.trim();
+            var pass = document.getElementById("password").value;
+            var localUser = localStorage.getItem("storedUser");
+            var localPass = localStorage.getItem("storedPass");
+            var localName = localStorage.getItem("storedName");
+            if((user === "admin" && pass === "1234") || (localUser && user === localUser && pass === localPass)) {
+                localStorage.setItem("isLoggedIn", "true");
+                window.location.replace("dashboard.html"); // เด้งไปหน้า dashboard.html ทันที
+            } else {
+                document.getElementById("errorMsg").innerHTML = `❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง <br><span style="color: #2563eb; cursor: pointer; text-decoration: underline; font-size: 0.9rem; font-weight: 600; display: inline-block; margin-top: 8px;" onclick="forgotPassword()">💡 ลืมรหัสผ่าน? คลิกที่นี่</span>`;
+                document.getElementById("errorMsg").style.display = "block";
+            }
+        }
+        function forgotPassword() {
+            var user = document.getElementById("username").value.trim();
+            var localUser = localStorage.getItem("storedUser");
+            var localPass = localStorage.getItem("storedPass");
+            if (!user) { alert("💡 กรุณากรอก 'ชื่อผู้ใช้งาน' ก่อนครับ"); }
+            else if (user === "admin") { alert("🔑 บัญชีระบบสูงสุด (admin) รหัสผ่านคือ: 1234"); }
+            else if (localUser && user === localUser) { alert("🔑 รหัสผ่านของคุณคือ: " + localPass); }
+            else { alert("❌ ไม่พบชื่อผู้ใช้งานนี้ในระบบ"); }
+        }
+    </script>
 </body>
 </html>
