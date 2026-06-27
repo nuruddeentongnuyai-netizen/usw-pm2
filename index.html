@@ -15,6 +15,15 @@
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="text-2xl font-bold text-blue-800">EcoPure</div>
+            
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-gray-800 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <!-- Desktop Nav -->
             <nav class="hidden md:flex space-x-6 items-center">
                 <a href="index.html" class="font-bold text-blue-700">หน้าแรก</a>
                 <a href="features.html" class="hover:text-blue-700">คุณสมบัติ</a>
@@ -23,11 +32,19 @@
                 <a href="login.html" class="px-5 py-2 bg-blue-900 text-white rounded-lg hover:bg-blue-800 transition">เข้าสู่ระบบ</a>
             </nav>
         </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-4">
+            <a href="index.html" class="block text-blue-700 font-bold">หน้าแรก</a>
+            <a href="features.html" class="block hover:text-blue-700">คุณสมบัติ</a>
+            <a href="products.html" class="block hover:text-blue-700">สินค้าของเรา</a>
+            <a href="contact.html" class="block hover:text-blue-700">ติดต่อเรา</a>
+            <a href="login.html" class="block text-center w-full px-5 py-3 bg-blue-900 text-white rounded-lg">เข้าสู่ระบบ</a>
+        </div>
     </header>
 
     <section class="relative h-[calc(100vh-80px)] flex items-center justify-center text-center px-6">
         <div class="absolute inset-0 z-0">
-            <!-- Industrial factory background image -->
             <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&q=80&w=2000" 
                  alt="Industrial Factory" 
                  class="w-full h-full object-cover">
@@ -53,5 +70,13 @@
         <p class="text-center text-gray-600 text-sm">&copy; 2026 EcoPure Water Tech. All Rights Reserved.</p>
     </footer>
 
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
 </body>
 </html>
