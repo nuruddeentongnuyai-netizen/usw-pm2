@@ -1,47 +1,85 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="th" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcoPure | นวัตกรรมบำบัดน้ำเสีย</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Prompt', sans-serif; }
-        /* ปรับเมนูมือถือให้เรียงแถวเดียว */
         @media (max-width: 640px) {
-            .nav-link { font-size: 0.65rem !important; padding-left: 0.15rem !important; padding-right: 0.15rem !important; }
-            .login-btn { font-size: 0.65rem !important; padding: 0.2rem 0.4rem !important; }
+            .nav-link { font-size: 0.75rem; padding-left: 0.2rem; padding-right: 0.2rem; }
         }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 text-gray-800">
 
-    <!-- Header ปรับให้มี z-index สูงสุดและ relative เพื่อให้กดได้แน่นอน -->
-    <header class="bg-white shadow-md sticky top-0 z-[100] relative">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-[1000]">
         <div class="container mx-auto px-2 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-lg md:text-xl font-bold text-blue-900">EcoPure</a>
-            
-            <nav class="flex items-center space-x-1 sm:space-x-4">
-                <a href="index.html" class="nav-link text-blue-700 font-bold hover:text-blue-900 transition relative z-[101]">หน้าแรก</a>
-                <a href="#" class="nav-link text-gray-600 hover:text-blue-600 transition relative z-[101]">คุณสมบัติ</a>
-                <a href="#" class="nav-link text-gray-600 hover:text-blue-600 transition relative z-[101]">สินค้า</a>
-                <a href="contact.html" class="nav-link text-gray-600 hover:text-blue-600 transition relative z-[101]">ติดต่อ</a>
-                <a href="login.html" class="login-btn bg-blue-800 text-white rounded-md hover:bg-blue-900 transition font-medium relative z-[101]">เข้าสู่ระบบ</a>
+            <div class="text-xl font-bold text-blue-800">EcoPure</div>
+            <nav>
+                <ul class="flex items-center space-x-2 sm:space-x-4">
+                    <li><a href="#hero" class="nav-link font-bold text-blue-700">หน้าแรก</a></li>
+                    <li><a href="#features" class="nav-link hover:text-blue-600">คุณสมบัติ</a></li>
+                    <li><a href="#products" class="nav-link hover:text-blue-600">สินค้าของเรา</a></li>
+                    <li><a href="contact.html" class="nav-link hover:text-blue-600">ติดต่อเรา</a></li>
+                    <li><a href="login.html" class="nav-link bg-blue-800 text-white px-3 py-1 rounded-md hover:bg-blue-900 transition text-[0.75rem] sm:text-sm">เข้าสู่ระบบ</a></li>
+                </ul>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <main class="relative h-[80vh] flex items-center justify-center overflow-hidden">
+    <main id="hero" class="relative h-[80vh] flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 bg-black/60 z-10"></div>
-        <img src="https://images.unsplash.com/photo-1581092160607-ee22530dd90e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Industrial Background">
+        <img src="https://images.unsplash.com/photo-1581092160607-ee22530dd90e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" class="absolute inset-0 w-full h-full object-cover" alt="[ภาพโรงงานอุตสาหกรรม]">
         
         <div class="relative z-20 text-center px-4 text-white">
-            <h1 class="text-xl md:text-4xl font-bold mb-3">เทคโนโลยีบำบัดน้ำเสีย เพื่ออนาคตที่ยั่งยืน</h1>
-            <p class="text-xs md:text-lg mb-6">เครื่องบำบัดน้ำเสียประสิทธิภาพสูง ประหยัดพลังงาน เหมาะสำหรับโรงงานอุตสาหกรรมและชุมชน</p>
-            <a href="contact.html" class="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg shadow-lg transition duration-300 text-xs md:text-sm">ขอคำปรึกษาฟรี</a>
+            <h1 class="text-2xl md:text-4xl font-bold mb-3">เทคโนโลยีบำบัดน้ำเสีย เพื่ออนาคตที่ยั่งยืน</h1>
+            <p class="text-sm md:text-lg mb-6">เครื่องบำบัดน้ำเสียประสิทธิภาพสูง ประหยัดพลังงาน เหมาะสำหรับโรงงานอุตสาหกรรมและชุมชน</p>
+            <a href="contact.html" class="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300 text-sm">ขอคำปรึกษาฟรี</a>
         </div>
     </main>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold text-blue-900 mb-8">คุณสมบัติเด่น</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-6 bg-gray-50 rounded-xl shadow">
+                    <h3 class="font-bold text-lg mb-2">ประหยัดพลังงาน</h3>
+                    <p class="text-sm text-gray-600">ใช้เทคโนโลยีขั้นสูงที่กินไฟน้อยลงกว่ารุ่นทั่วไป 30%</p>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-xl shadow">
+                    <h3 class="font-bold text-lg mb-2">บำบัดสะอาด</h3>
+                    <p class="text-sm text-gray-600">ผ่านมาตรฐานน้ำทิ้งของกรมโรงงานอุตสาหกรรมอย่างเคร่งครัด</p>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-xl shadow">
+                    <h3 class="font-bold text-lg mb-2">ทนทาน</h3>
+                    <p class="text-sm text-gray-600">โครงสร้างทำจากวัสดุพิเศษ ป้องกันการกัดกร่อนจากสารเคมี</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold text-blue-900 mb-8">สินค้าของเรา</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold text-xl mb-4">EcoPure Compact</h3>
+                    <p class="text-sm text-gray-600 mb-4">เหมาะสำหรับโรงงานขนาดเล็ก พื้นที่จำกัด ติดตั้งง่าย</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold text-xl mb-4">EcoPure Pro</h3>
+                    <p class="text-sm text-gray-600 mb-4">รองรับปริมาณน้ำเสียสูง สำหรับโรงงานอุตสาหกรรมหนัก</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </body>
 </html>
