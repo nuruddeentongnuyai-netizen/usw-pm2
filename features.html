@@ -10,44 +10,60 @@
 </head>
 <body class="bg-gray-50 text-gray-800">
     <header class="bg-white shadow-sm sticky top-0 z-[1000]">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="text-xl font-bold text-blue-800">EcoPure</div>
-            <nav><ul class="flex items-center space-x-2 sm:space-x-6 text-sm">
+            <nav><ul class="flex items-center space-x-4 text-sm font-medium">
                 <li><a href="index.html" class="hover:text-blue-600">หน้าแรก</a></li>
-                <li><a href="features.html" class="font-bold text-blue-700 border-b-2 border-blue-700">คุณสมบัติ</a></li>
+                <li><a href="features.html" class="text-blue-700 border-b-2 border-blue-700 pb-1">คุณสมบัติ</a></li>
                 <li><a href="products.html" class="hover:text-blue-600">สินค้า</a></li>
                 <li><a href="about.html" class="hover:text-blue-600">เกี่ยวกับ</a></li>
                 <li><a href="contact.html" class="hover:text-blue-600">ติดต่อ</a></li>
-                <li><a href="login.html" class="bg-blue-800 text-white px-4 py-2 rounded-lg">เข้าสู่ระบบ</a></li>
+                <li><a href="login.html" class="bg-blue-800 text-white px-3 py-1 rounded">เข้าสู่ระบบ</a></li>
             </ul></nav>
         </div>
     </header>
 
     <main class="py-12 px-6 container mx-auto">
-        <h2 class="text-3xl font-bold mb-10 text-center text-blue-900">คุณสมบัติการวิเคราะห์คุณภาพน้ำ</h2>
+        <h2 class="text-3xl font-bold text-center mb-10">คุณสมบัติและการวิเคราะห์คุณภาพน้ำ</h2>
         
-        <div class="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-lg border border-blue-100">
-            <h3 class="text-2xl font-semibold mb-6 text-blue-800 border-l-4 border-blue-600 pl-4">การควบคุมและวิเคราะห์ค่า pH</h3>
-            <p class="mb-6 text-gray-600">ระบบ EcoPure มาพร้อมเซนเซอร์ความแม่นยำสูงสำหรับการตรวจวัดค่าความเป็นกรด-ด่าง (pH) ในน้ำแบบ Real-time เพื่อให้มั่นใจว่าน้ำที่ผ่านการบำบัดมีคุณภาพตามมาตรฐานก่อนปล่อยสู่สิ่งแวดล้อม</p>
-            
-            <div class="grid md:grid-cols-2 gap-6 mt-8">
-                <div class="p-6 bg-blue-50 rounded-xl">
-                    <h4 class="font-bold text-blue-900 mb-2">ช่วงการวัด (Range)</h4>
-                    <p>รองรับการวัดค่า pH ตั้งแต่ 0.00 ถึง 14.00 pH ด้วยค่าความคลาดเคลื่อนต่ำกว่า ±0.01</p>
-                </div>
-                <div class="p-6 bg-blue-50 rounded-xl">
-                    <h4 class="font-bold text-blue-900 mb-2">ระบบปรับสมดุลอัตโนมัติ</h4>
-                    <p>หากค่า pH ไม่อยู่ในเกณฑ์มาตรฐาน ระบบจะทำการเติมสารปรับสภาพน้ำอัตโนมัติเพื่อให้ได้ค่าที่เหมาะสม (Neutral pH 7.0)</p>
-                </div>
+        <div class="grid md:grid-cols-3 gap-6 mb-12">
+            <div class="p-6 bg-white rounded-lg shadow border">
+                <h3 class="font-bold text-blue-800 mb-2">ประหยัดพลังงาน</h3>
+                <p class="text-sm text-gray-600">เทคโนโลยีมอเตอร์ประสิทธิภาพสูง ช่วยลดค่าใช้จ่ายด้านพลังงานกว่า 40%</p>
             </div>
-            
-            <div class="mt-8 p-6 bg-gray-50 rounded-xl border-t border-gray-200">
-                <h4 class="font-bold text-gray-800 mb-2">มาตรฐานการวิเคราะห์</h4>
-                <ul class="list-disc list-inside space-y-2 text-gray-600">
-                    <li>การสอบเทียบอัตโนมัติ (Auto-Calibration)</li>
-                    <li>ระบบแจ้งเตือนผ่านหน้าจอเมื่อค่า pH ผิดปกติ</li>
-                    <li>รองรับการบันทึกข้อมูลย้อนหลังเพื่อทำรายงานด้านสิ่งแวดล้อม</li>
-                </ul>
+            <div class="p-6 bg-white rounded-lg shadow border">
+                <h3 class="font-bold text-blue-800 mb-2">ความทนทาน</h3>
+                <p class="text-sm text-gray-600">โครงสร้างสแตนเลสสตีลเกรดอุตสาหกรรม ทนต่อการกัดกร่อนสูง</p>
+            </div>
+            <div class="p-6 bg-white rounded-lg shadow border">
+                <h3 class="font-bold text-blue-800 mb-2">ระบบอัตโนมัติ</h3>
+                <p class="text-sm text-gray-600">ระบบควบคุม PLC ที่ช่วยตรวจสอบการทำงานและแจ้งเตือนผ่านหน้าจอ</p>
+            </div>
+        </div>
+
+        <div class="bg-blue-50 p-8 rounded-xl shadow-inner">
+            <h3 class="text-2xl font-bold mb-6 text-blue-900 text-center">ข้อมูลการวิเคราะห์ค่าคุณภาพน้ำมาตรฐาน</h3>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <div class="bg-white p-4 rounded shadow-sm border-l-4 border-blue-500">
+                        <h4 class="font-bold">ค่าความเป็นกรด-ด่าง (pH)</h4>
+                        <p class="text-sm">ควบคุมให้อยู่ในช่วง 6.5 - 8.5 เพื่อความปลอดภัยของแหล่งน้ำธรรมชาติ</p>
+                    </div>
+                    <div class="bg-white p-4 rounded shadow-sm border-l-4 border-green-500">
+                        <h4 class="font-bold">ค่า BOD (Biological Oxygen Demand)</h4>
+                        <p class="text-sm">ลดค่า BOD ลงได้มากกว่า 90% ก่อนปล่อยน้ำทิ้งสู่สิ่งแวดล้อม</p>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-white p-4 rounded shadow-sm border-l-4 border-yellow-500">
+                        <h4 class="font-bold">ค่า COD (Chemical Oxygen Demand)</h4>
+                        <p class="text-sm">กำจัดสารเคมีตกค้างและสารอินทรีย์ยากต่อการย่อยสลาย</p>
+                    </div>
+                    <div class="bg-white p-4 rounded shadow-sm border-l-4 border-red-500">
+                        <h4 class="font-bold">ความขุ่นและสารแขวนลอย (TSS)</h4>
+                        <p class="text-sm">ผ่านระบบกรองละเอียดเพื่อให้น้ำใสสะอาดตามเกณฑ์มาตรฐานกรมโรงงาน</p>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
