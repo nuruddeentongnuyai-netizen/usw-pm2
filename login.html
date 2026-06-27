@@ -147,6 +147,7 @@
             <div id="errorMsg" class="error-msg">❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง</div>
             <div id="regErrorMsg" class="error-msg">❌ กรุณากรอกข้อมูลให้ครบถ้วน และรหัสผ่านต้องตรงกัน</div>
 
+            <!-- ฟอร์มเข้าสู่ระบบ -->
             <div id="loginForm">
                 <h2 style="margin-bottom: 25px; text-align: center; color: #1e3a8a; font-weight: 600;">เข้าสู่ระบบผู้ดูแลระบบ</h2>
                 <div class="input-group">
@@ -163,6 +164,7 @@
                 </div>
             </div>
 
+            <!-- ฟอร์มสมัครสมาชิก -->
             <div id="registerForm" style="display: none;">
                 <h2 style="margin-bottom: 25px; text-align: center; color: #1e3a8a; font-weight: 600;">สมัครสมาชิกใหม่</h2>
                 <div class="input-group">
@@ -192,6 +194,7 @@
             </div>
         </div>
 
+        <!-- แดชบอร์ด -->
         <div id="dashboardSection">
             <div class="welcome-box">
                 <i class="fas fa-check-circle" style="font-size: 3rem; color: #22c55e; margin-bottom: 15px;"></i>
@@ -229,14 +232,14 @@
                 return;
             }
 
-            // บันทึกข้อมูลลงในระบบจำถาวรของบราวเซอร์
+            // บันทึกข้อมูลแบบถาวรลงบราวเซอร์
             localStorage.setItem("storedUser", newUser);
             localStorage.setItem("storedPass", newPass);
             localStorage.setItem("storedName", fullName);
 
-            alert("🎉 สมัครสมาชิกสำเร็จแล้ว! ระบบจะพากลับไปหน้าเข้าสู่ระบบเพื่อให้ทดสอบล็อกอิน");
-            showLogin(); // เปลี่ยนมาให้ค้างอยู่ที่หน้าล็อกอินเลย ข้อมูลจะได้ไม่หลุด
-            document.getElementById("username").value = newUser; // ใส่ชื่อที่สมัครให้อัตโนมัติเลย
+            alert("🎉 สมัครสมาชิกสำเร็จแล้ว!");
+            showLogin();
+            document.getElementById("username").value = newUser;
         }
 
         function checkLogin() {
@@ -281,6 +284,7 @@
             }
         }
 
+        // แก้ไขฟังก์ชันล็อกเอาต์ ไม่ให้ไปลบข้อมูลใน localStorage
         function logout() {
             document.getElementById("username").value = "";
             document.getElementById("password").value = "";
