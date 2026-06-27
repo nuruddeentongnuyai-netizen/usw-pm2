@@ -141,7 +141,7 @@
             <div id="regErrorMsg" class="error-msg">❌ กรุณากรอกข้อมูลให้ครบถ้วน และรหัสผ่านต้องตรงกัน</div>
 
             <div id="loginForm">
-                <h3 style="margin-bottom: 20px; text-align: center; color: #334155;">เข้าสู่ระบบ</h3>
+                <h3 style="margin-bottom: 20px; text-align: center; color: #334155;">เข้าสู่ระบบผู้ดูแลระบบ</h3>
                 <div class="input-group">
                     <i class="fas fa-user"></i>
                     <input type="text" id="username" placeholder="ชื่อผู้ใช้งาน">
@@ -152,7 +152,7 @@
                 </div>
                 <button onclick="checkLogin()">เข้าสู่ระบบ</button>
                 <div class="switch-form">
-                    ยังไม่มีบัญชี? <a href="#" onclick="showRegister()">สมัครสมาชิก</a>
+                    ยังไม่มีบัญชีผู้ใช้? <a href="#" onclick="showRegister()">สมัครผู้ใช้ใหม่ที่นี่</a>
                 </div>
             </div>
 
@@ -196,11 +196,6 @@
     </div>
 
     <script>
-        // ตัวแปรจำลองฐานข้อมูลจำลองสำหรับการสมัครสมาชิก
-        var registeredUser = "";
-        var registeredPass = "";
-        var registeredFullName = "";
-
         function showRegister() {
             document.getElementById("loginForm").style.display = "none";
             document.getElementById("registerForm").style.display = "block";
@@ -227,9 +222,10 @@
                 return;
             }
 
-            registeredUser = newUser;
-            registeredPass = newPass;
-            registeredFullName = fullName;
+            // บันทึกข้อมูลลงในบราวเซอร์ถาวร (เปลี่ยนหน้าก็ไม่หาย)
+            localStorage.setItem("storedUser", newUser);
+            localStorage.setItem("storedPass", newPass);
+            localStorage.setItem("storedName", fullName);
 
             alert("🎉 สมัครสมาชิกสำเร็จแล้ว! ระบบจะพากลับไปหน้าหลัก");
             window.location.href = "index.html";
@@ -239,10 +235,15 @@
             var user = document.getElementById("username").value;
             var pass = document.getElementById("password").value;
             
-            if((user === "admin" && pass === "1234") || (user === registeredUser && pass === registeredPass)) {
+            // ดึงข้อมูลที่เคยสมัครไว้ในบราวเซอร์มาตรวจเช็ก
+            var localUser = localStorage.getItem("storedUser");
+            var localPass = localStorage.getItem("storedPass");
+            var localName = localStorage.getItem("storedName");
+            
+            if((user === "admin" && pass === "1234") || (user === localUser && pass === localPass)) {
                 document.getElementById("loginSection").style.display = "none";
                 document.getElementById("dashboardSection").style.display = "block";
-                document.getElementById("userDisplay").innerText = user === "admin" ? "ผู้ดูแลระบบสูงสุด" : registeredFullName;
+                document.getElementById("userDisplay").innerText = user === "admin" ? "ผู้ดูแลระบบสูงสุด" : localName;
                 document.getElementById("errorMsg").style.display = "none";
             } else {
                 document.getElementById("errorMsg").innerHTML = `
@@ -258,13 +259,16 @@
 
         function forgotPassword() {
             var user = document.getElementById("username").value;
+            var localUser = localStorage.getItem("storedUser");
+            var localPass = localStorage.getItem("storedPass");
+            var localName = localStorage.getItem("storedName");
             
             if (!user) {
                 alert("💡 กรุณากรอก 'ชื่อผู้ใช้งาน' ในช่องล็อกอินด้านบนก่อน เพื่อให้ระบบตรวจสอบรหัสผ่านครับ");
             } else if (user === "admin") {
                 alert("🔑 บัญชีระบบสูงสุด (admin) รหัสผ่านคือ: 1234");
-            } else if (user === registeredUser) {
-                alert("🔑 บัญชีคุณ " + registeredFullName + "\n📌 ชื่อผู้ใช้: " + registeredUser + "\n🔒 รหัสผ่านของคุณคือ: " + registeredPass);
+            } else if (user === localUser) {
+                alert("🔑 บัญชีคุณ " + localName + "\n📌 ชื่อผู้ใช้: " + localUser + "\n🔒 รหัสผ่านของคุณคือ: " + localPass);
             } else {
                 alert("❌ ไม่พบชื่อผู้ใช้งานนี้ในระบบ กรุณาตรวจสอบการสะกดอีกครั้งครับ");
             }
