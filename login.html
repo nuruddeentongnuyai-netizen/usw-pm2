@@ -17,7 +17,7 @@
         button { width: 100%; padding: 14px; background: #1e40af; color: white; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: background 0.3s; }
         button:hover { background: #1d4ed8; }
         .switch-form { text-align: center; margin-top: 25px; color: #64748b; }
-        .switch-form a { color: #1d4ed8; text-decoration: underline; font-weight: bold; }
+        .switch-form a { color: #1d4ed8; text-decoration: underline; font-weight: bold; cursor: pointer; }
         .error-msg { color: #ef4444; background: #fee2e2; padding: 12px; border-radius: 8px; margin-bottom: 20px; display: none; font-size: 0.95rem; text-align: center; line-height: 1.5; }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
@@ -41,7 +41,7 @@
                     <input type="password" id="password" placeholder="รหัสผ่าน">
                 </div>
                 <button onclick="checkLogin()">เข้าสู่ระบบ</button>
-                <div class="switch-form">ยังไม่มีบัญชีผู้ใช้? <a href="#" onclick="showRegister()">สมัครผู้ใช้ใหม่ที่นี่</a></div>
+                <div class="switch-form">ยังไม่มีบัญชีผู้ใช้? <a onclick="showRegister()">สมัครผู้ใช้ใหม่ที่นี่</a></div>
             </div>
 
             <div id="registerForm" style="display: none;">
@@ -52,7 +52,7 @@
                 <div class="input-group"><i class="fas fa-lock"></i><input type="password" id="regPass" placeholder="ตั้งรหัสผ่าน"></div>
                 <div class="input-group"><i class="fas fa-key"></i><input type="password" id="regPassConfirm" placeholder="ยืนยันรหัสผ่านอีกครั้ง"></div>
                 <button onclick="handleRegister()">ลงทะเบียน</button>
-                <div class="switch-form">มีบัญชีอยู่แล้ว? <a href="#" onclick="showLogin()">เข้าสู่ระบบ</a></div>
+                <div class="switch-form">มีบัญชีอยู่แล้ว? <a onclick="showLogin()">เข้าสู่ระบบ</a></div>
             </div>
         </div>
     </div>
@@ -75,10 +75,9 @@
             var pass = document.getElementById("password").value;
             var localUser = localStorage.getItem("storedUser");
             var localPass = localStorage.getItem("storedPass");
-            var localName = localStorage.getItem("storedName");
             if((user === "admin" && pass === "1234") || (localUser && user === localUser && pass === localPass)) {
                 localStorage.setItem("isLoggedIn", "true");
-                window.location.replace("dashboard.html"); // เด้งไปหน้า dashboard.html ทันที
+                window.location.replace("index.html"); 
             } else {
                 document.getElementById("errorMsg").innerHTML = `❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง <br><span style="color: #2563eb; cursor: pointer; text-decoration: underline; font-size: 0.9rem; font-weight: 600; display: inline-block; margin-top: 8px;" onclick="forgotPassword()">💡 ลืมรหัสผ่าน? คลิกที่นี่</span>`;
                 document.getElementById("errorMsg").style.display = "block";
