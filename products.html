@@ -3,53 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>สินค้าของเรา | EcoPure</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>EcoPure | สินค้าของเรา</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Prompt', sans-serif; }
+        @media (max-width: 640px) {
+            .nav-link { font-size: 0.75rem; padding: 0.2rem; }
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800">
 
-    <header>
-        <div class="container">
-            <div class="logo">EcoPure</div>
+    <header class="bg-white shadow-sm sticky top-0 z-[1000]">
+        <div class="container mx-auto px-2 py-3 flex justify-between items-center">
+            <div class="text-xl font-bold text-blue-800">EcoPure</div>
             <nav>
-                <ul>
-                    <li><a href="index.html">หน้าแรก</a></li>
-                    <li><a href="features.html">คุณสมบัติ</a></li>
-                    <li><a href="products.html" class="active">สินค้าของเรา</a></li>
-                    <li><a href="contact.html">ติดต่อเรา</a></li>
-                    <li><a href="login.html" style="background:#0077b6; color:#fff; padding:8px 16px; border-radius:4px; text-decoration:none; font-weight:600;">เข้าสู่ระบบ</a></li>
+                <ul class="flex items-center space-x-1 sm:space-x-4">
+                    <li><a href="index.html" class="nav-link hover:text-blue-600">หน้าแรก</a></li>
+                    <li><a href="features.html" class="nav-link hover:text-blue-600">คุณสมบัติ</a></li>
+                    <li><a href="products.html" class="nav-link font-bold text-blue-700 border-b-2 border-blue-700">สินค้า</a></li>
+                    <li><a href="about.html" class="nav-link hover:text-blue-600">เกี่ยวกับ</a></li>
+                    <li><a href="contact.html" class="nav-link hover:text-blue-600">ติดต่อ</a></li>
+                    <li><a href="login.html" class="nav-link bg-blue-800 text-white px-3 py-1 rounded-md hover:bg-blue-900 transition text-[0.75rem]">เข้าสู่ระบบ</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section class="products-page" style="padding: 120px 20px; min-height: calc(100vh - 140px); background: #ffffff;">
-        <div class="container" style="max-width: 1200px; margin: 0 auto; text-align: center;">
-            <h2 style="font-size: 2.5rem; color: #0077b6; margin-bottom: 40px;">รุ่นสินค้าที่แนะนำ</h2>
-            <div class="products-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                <div class="product-card" style="background: #f8f9fa; padding: 30px; border-radius: 8px; border: 1px solid #ddd;">
-                    <h3 style="color: #333; margin-bottom: 10px;">Eco-Mini</h3>
-                    <p style="color: #0077b6; font-weight: bold; margin-bottom: 15px;">for Home</p>
-                    <p style="color: #666;">ขนาดกะทัดรัด ติดตั้งง่าย รองรับการบำบัดน้ำเสียจากการซักล้างและห้องครัวในบ้าน</p>
-                </div>
-                <div class="product-card" style="background: #f8f9fa; padding: 30px; border-radius: 8px; border: 1px solid #ddd;">
-                    <h3 style="color: #333; margin-bottom: 10px;">Eco-Pro</h3>
-                    <p style="color: #0077b6; font-weight: bold; margin-bottom: 15px;">for Business</p>
-                    <p style="color: #666;">ดักไขมันขั้นสูงและบำบัดกลิ่นได้อย่างมีประสิทธิภาพ เหมาะกับธุรกิจขนาดเล็กถึงกลาง</p>
-                </div>
-                <div class="product-card" style="background: #f8f9fa; padding: 30px; border-radius: 8px; border: 1px solid #ddd;">
-                    <h3 style="color: #333; margin-bottom: 10px;">Eco-Industrial</h3>
-                    <p style="color: #0077b6; font-weight: bold; margin-bottom: 15px;">for Factory</p>
-                    <p style="color: #666;">ระบบขนาดใหญ่รองรับปริมาณน้ำเสียอุตสาหกรรม ควบคุมการทำงานด้วยระบบ AI อัจฉริยะ</p>
-                </div>
+    <main class="py-12 container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-8">สินค้าของเรา</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white p-8 rounded-xl shadow-lg border">
+                <h3 class="font-bold text-2xl text-blue-800 mb-2">EcoPure Compact</h3>
+                <p>เหมาะสำหรับธุรกิจขนาดเล็กและชุมชนที่พักอาศัย</p>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow-lg border">
+                <h3 class="font-bold text-2xl text-blue-800 mb-2">EcoPure Pro</h3>
+                <p>ระบบบำบัดน้ำเสียสำหรับอุตสาหกรรมหนัก ประสิทธิภาพสูงสุด</p>
             </div>
         </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 EcoPure Water Tech. All Rights Reserved.</p>
-    </footer>
-
+    </main>
 </body>
 </html>
