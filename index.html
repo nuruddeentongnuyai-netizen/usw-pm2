@@ -6,9 +6,11 @@
     <title>EcoPure | หน้าแรก</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>body { font-family: 'Prompt', sans-serif; }</style>
+    <style>
+        body { font-family: 'Prompt', sans-serif; }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
 
     <header class="bg-white shadow-sm sticky top-0 z-[1000]">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -17,21 +19,27 @@
                 <ul class="flex items-center space-x-6 text-sm font-medium text-gray-700">
                     <li><a href="index.html" class="text-blue-700 border-b-2 border-blue-700 pb-1">หน้าแรก</a></li>
                     <li><a href="features.html" class="hover:text-blue-600 transition">คุณสมบัติ</a></li>
-                    <li><a href="products.html" class="hover:text-blue-600 transition">สินค้า</a></li>
+                    <li><a href="products.html" class="hover:text-blue-600 transition">สินค้าของพวกเรา</a></li>
                     <li><a href="about.html" class="hover:text-blue-600 transition">เกี่ยวกับ</a></li>
-                    <li><a href="contact.html" class="hover:text-blue-600 transition">ติดต่อ</a></li>
+                    <li><a href="contact.html" class="hover:text-blue-600 transition">ติดต่อเรา</a></li>
                     <li><a href="login.html" class="bg-blue-800 text-white px-4 py-2 rounded-md hover:bg-blue-900 transition">เข้าสู่ระบบ</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="relative h-[80vh] flex items-center justify-center overflow-hidden">
+    <!-- ภาพพื้นหลังนี้ดึงมาจากคลังภาพระดับโลกที่มีมู้ดโทนคล้ายคลึงกับในรูป ai.jpg ของคุณอย่างลงตัว -->
+    <main class="relative flex-grow flex items-center justify-center overflow-hidden h-[calc(100vh-73px)]">
+        <!-- Overlay Layer for Text Readability -->
         <div class="absolute inset-0 bg-black/60 z-10"></div>
+        
+        <!-- Background Image of Water Treatment Facility -->
         <img src="https://images.unsplash.com/photo-1581092160607-ee22530dd90e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" 
              class="absolute inset-0 w-full h-full object-cover" 
-             alt="Industrial Background">
+             alt="Industrial Wastewater Treatment Background"
+             onerror="this.src='https://placehold.co/1600x900/1e293b/ffffff?text=EcoPure+Water+Treatment'">
         
+        <!-- Hero Content -->
         <div class="relative z-20 text-center px-6 text-white max-w-3xl">
             <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">เทคโนโลยีบำบัดน้ำเสีย เพื่ออนาคตที่ยั่งยืน</h1>
             <p class="text-lg md:text-xl mb-8 font-light">เครื่องบำบัดน้ำเสียประสิทธิภาพสูง ประหยัดพลังงาน เหมาะสำหรับโรงงานอุตสาหกรรมและชุมชน</p>
