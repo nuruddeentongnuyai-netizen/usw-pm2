@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoPure - เข้าสู่ระบบ / สมัครสมาชิก</title>
+    <title>EcoPure - เข้าสู่ระบบ</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
@@ -34,9 +34,13 @@
         .logo {
             text-align: center;
             margin-bottom: 30px;
-            color: #0284c7;
-            font-size: 2rem;
+            color: #1e3a8a;
+            font-size: 2.2rem;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
         .input-group {
@@ -54,56 +58,59 @@
 
         .input-group input {
             width: 100%;
-            padding: 12px 12px 12px 45px;
+            padding: 15px 12px 15px 45px;
             border: 2px solid #e2e8f0;
             border-radius: 10px;
             outline: none;
             font-size: 1rem;
             transition: all 0.3s;
+            background-color: #f8fafc;
         }
 
         .input-group input:focus {
-            border-color: #0284c7;
+            border-color: #1d4ed8;
+            background-color: #fff;
         }
 
         button {
             width: 100%;
-            padding: 12px;
-            background: #0284c7;
+            padding: 14px;
+            background: #1e40af;
             color: white;
             border: none;
             border-radius: 10px;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: bold;
             cursor: pointer;
             transition: background 0.3s;
         }
 
         button:hover {
-            background: #0369a1;
+            background: #1d4ed8;
         }
 
         .switch-form {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 25px;
             color: #64748b;
         }
 
         .switch-form a {
-            color: #0284c7;
-            text-decoration: none;
+            color: #1d4ed8;
+            text-decoration: underline;
             font-weight: bold;
         }
 
         .error-msg {
             color: #ef4444;
             background: #fee2e2;
-            padding: 10px;
+            padding: 12px;
             border-radius: 8px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             display: none;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             text-align: center;
+            line-height: 1.5;
         }
 
         #dashboardSection {
@@ -134,14 +141,14 @@
     <div class="container">
         <div id="loginSection">
             <div class="logo">
-                <i class="fas fa-leaf"></i> EcoPure
+                <i class="fas fa-leaf" style="color: #2563eb;"></i> EcoPure
             </div>
             
             <div id="errorMsg" class="error-msg">❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง</div>
             <div id="regErrorMsg" class="error-msg">❌ กรุณากรอกข้อมูลให้ครบถ้วน และรหัสผ่านต้องตรงกัน</div>
 
             <div id="loginForm">
-                <h3 style="margin-bottom: 20px; text-align: center; color: #334155;">เข้าสู่ระบบผู้ดูแลระบบ</h3>
+                <h2 style="margin-bottom: 25px; text-align: center; color: #1e3a8a; font-weight: 600;">เข้าสู่ระบบผู้ดูแลระบบ</h2>
                 <div class="input-group">
                     <i class="fas fa-user"></i>
                     <input type="text" id="username" placeholder="ชื่อผู้ใช้งาน">
@@ -157,7 +164,7 @@
             </div>
 
             <div id="registerForm" style="display: none;">
-                <h3 style="margin-bottom: 20px; text-align: center; color: #334155;">สมัครสมาชิกใหม่</h3>
+                <h2 style="margin-bottom: 25px; text-align: center; color: #1e3a8a; font-weight: 600;">สมัครสมาชิกใหม่</h2>
                 <div class="input-group">
                     <i class="fas fa-id-card"></i>
                     <input type="text" id="regName" placeholder="ชื่อ-นามสกุล">
@@ -189,7 +196,7 @@
             <div class="welcome-box">
                 <i class="fas fa-check-circle" style="font-size: 3rem; color: #22c55e; margin-bottom: 15px;"></i>
                 <h2>ยินดีต้อนรับเข้าสู่ระบบ</h2>
-                <p style="margin-top: 10px; color: #64748b;">คุณ: <span id="userDisplay" style="font-weight: bold; color: #0284c7;">-</span></p>
+                <p style="margin-top: 10px; color: #64748b;">คุณ: <span id="userDisplay" style="font-weight: bold; color: #2563eb;">-</span></p>
             </div>
             <button class="btn-logout" onclick="logout()">ออกจากระบบ</button>
         </div>
@@ -213,7 +220,7 @@
         function handleRegister() {
             var fullName = document.getElementById("regName").value;
             var email = document.getElementById("regEmail").value;
-            var newUser = document.getElementById("regUser").value;
+            var newUser = document.getElementById("regUser").value.trim();
             var newPass = document.getElementById("regPass").value;
             var confirmPass = document.getElementById("regPassConfirm").value;
 
@@ -222,25 +229,25 @@
                 return;
             }
 
-            // บันทึกข้อมูลลงในบราวเซอร์ถาวร (เปลี่ยนหน้าก็ไม่หาย)
+            // บันทึกข้อมูลลงในระบบจำถาวรของบราวเซอร์
             localStorage.setItem("storedUser", newUser);
             localStorage.setItem("storedPass", newPass);
             localStorage.setItem("storedName", fullName);
 
-            alert("🎉 สมัครสมาชิกสำเร็จแล้ว! ระบบจะพากลับไปหน้าหลัก");
-            window.location.href = "index.html";
+            alert("🎉 สมัครสมาชิกสำเร็จแล้ว! ระบบจะพากลับไปหน้าเข้าสู่ระบบเพื่อให้ทดสอบล็อกอิน");
+            showLogin(); // เปลี่ยนมาให้ค้างอยู่ที่หน้าล็อกอินเลย ข้อมูลจะได้ไม่หลุด
+            document.getElementById("username").value = newUser; // ใส่ชื่อที่สมัครให้อัตโนมัติเลย
         }
 
         function checkLogin() {
-            var user = document.getElementById("username").value;
+            var user = document.getElementById("username").value.trim();
             var pass = document.getElementById("password").value;
             
-            // ดึงข้อมูลที่เคยสมัครไว้ในบราวเซอร์มาตรวจเช็ก
             var localUser = localStorage.getItem("storedUser");
             var localPass = localStorage.getItem("storedPass");
             var localName = localStorage.getItem("storedName");
             
-            if((user === "admin" && pass === "1234") || (user === localUser && pass === localPass)) {
+            if((user === "admin" && pass === "1234") || (localUser && user === localUser && pass === localPass)) {
                 document.getElementById("loginSection").style.display = "none";
                 document.getElementById("dashboardSection").style.display = "block";
                 document.getElementById("userDisplay").innerText = user === "admin" ? "ผู้ดูแลระบบสูงสุด" : localName;
@@ -248,7 +255,7 @@
             } else {
                 document.getElementById("errorMsg").innerHTML = `
                     ❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง <br>
-                    <span style="color: #0077b6; cursor: pointer; text-decoration: underline; font-size: 0.9rem; font-weight: 600; display: inline-block; margin-top: 8px;" 
+                    <span style="color: #2563eb; cursor: pointer; text-decoration: underline; font-size: 0.9rem; font-weight: 600; display: inline-block; margin-top: 8px;" 
                           onclick="forgotPassword()">
                         💡 ลืมรหัสผ่านใช่ไหม? คลิกที่นี่เพื่อดูรหัสของคุณ
                     </span>
@@ -258,7 +265,7 @@
         }
 
         function forgotPassword() {
-            var user = document.getElementById("username").value;
+            var user = document.getElementById("username").value.trim();
             var localUser = localStorage.getItem("storedUser");
             var localPass = localStorage.getItem("storedPass");
             var localName = localStorage.getItem("storedName");
@@ -267,7 +274,7 @@
                 alert("💡 กรุณากรอก 'ชื่อผู้ใช้งาน' ในช่องล็อกอินด้านบนก่อน เพื่อให้ระบบตรวจสอบรหัสผ่านครับ");
             } else if (user === "admin") {
                 alert("🔑 บัญชีระบบสูงสุด (admin) รหัสผ่านคือ: 1234");
-            } else if (user === localUser) {
+            } else if (localUser && user === localUser) {
                 alert("🔑 บัญชีคุณ " + localName + "\n📌 ชื่อผู้ใช้: " + localUser + "\n🔒 รหัสผ่านของคุณคือ: " + localPass);
             } else {
                 alert("❌ ไม่พบชื่อผู้ใช้งานนี้ในระบบ กรุณาตรวจสอบการสะกดอีกครั้งครับ");
