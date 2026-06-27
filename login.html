@@ -124,18 +124,45 @@
             
         }
 
-        function checkLogin() {
-            var user = document.getElementById("username").value;
-            var pass = document.getElementById("password").value;
-            
-            if((user === "admin" && pass === "1234") || (user === registeredUser && pass === registeredPass)) {
-                document.getElementById("loginSection").style.display = "none";
-                document.getElementById("dashboardSection").style.display = "block";
-                document.getElementById("userDisplay").innerText = user === "admin" ? "ผู้ดูแลระบบสูงสุด" : registeredFullName;
-            } else {
-                document.getElementById("errorMsg").style.display = "block";
-            }
-        }
+     window.location.href = "index.html";
+}
+
+function checkLogin() {
+    var user = document.getElementById("username").value;
+    var pass = document.getElementById("password").value;
+    
+    if((user === "admin" && pass === "1234") || (user === registeredUser && pass === registeredPass)) {
+        document.getElementById("loginSection").style.display = "none";
+        document.getElementById("dashboardSection").style.display = "block";
+        document.getElementById("userDisplay").innerText = user === "admin" ? "ผู้ดูแลระบบสูงสุด" : registeredFullName;
+        document.getElementById("errorMsg").style.display = "none";
+    } else {
+        document.getElementById("errorMsg").innerHTML = `
+            ❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง <br>
+            <span style="color: #0077b6; cursor: pointer; text-decoration: underline; font-size: 0.9rem; font-weight: 600; display: inline-block; margin-top: 8px;" 
+                  onclick="forgotPassword()">
+                💡 ลืมรหัสผ่านใช่ไหม? คลิกที่นี่เพื่อดูรหัสของคุณ
+            </span>
+        `;
+        document.getElementById("errorMsg").style.display = "block";
+    }
+}
+
+function forgotPassword() {
+    var user = document.getElementById("username").value;
+    
+    if (!user) {
+        alert("💡 กรุณากรอก 'ชื่อผู้ใช้งาน' ในช่องล็อกอินด้านบนก่อน เพื่อให้ระบบตรวจสอบรหัสผ่านครับ");
+    } else if (user === "admin") {
+        alert("🔑 บัญชีระบบสูงสุด (admin) รหัสผ่านคือ: 1234");
+    } else if (user === registeredUser) {
+        alert("🔑 บัญชีคุณ " + registeredFullName + "\n📌 ชื่อผู้ใช้: " + registeredUser + "\n🔒 รหัสผ่านของคุณคือ: " + registeredPass);
+    } else {
+        alert("❌ ไม่พบชื่อผู้ใช้งานนี้ในระบบ กรุณาตรวจสอบการสะกดอีกครั้งครับ");
+    }
+}
+
+function logout() {
 
         function logout() {
             document.getElementById("username").value = "";
