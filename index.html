@@ -12,33 +12,46 @@
 </head>
 <body class="bg-white text-gray-900">
 
-    <header class="border-b border-gray-200">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="text-2xl font-bold text-blue-800">EcoPure</div>
-            <nav>
-                <ul class="flex space-x-6">
-                    <li><a href="index.html" class="font-bold text-blue-700">หน้าแรก</a></li>
-                    <li><a href="features.html" class="hover:text-blue-700">คุณสมบัติ</a></li>
-                    <li><a href="products.html" class="hover:text-blue-700">สินค้าของเรา</a></li>
-                    <li><a href="contact.html" class="hover:text-blue-700">ติดต่อเรา</a></li>
-                </ul>
+            <nav class="hidden md:flex space-x-6 items-center">
+                <a href="index.html" class="font-bold text-blue-700">หน้าแรก</a>
+                <a href="features.html" class="hover:text-blue-700">คุณสมบัติ</a>
+                <a href="products.html" class="hover:text-blue-700">สินค้าของเรา</a>
+                <a href="contact.html" class="hover:text-blue-700">ติดต่อเรา</a>
+                <a href="#" class="px-5 py-2 bg-blue-900 text-white rounded-lg hover:bg-blue-800 transition">เข้าสู่ระบบ</a>
             </nav>
         </div>
     </header>
 
-    <section class="h-[calc(100vh-80px)] flex items-center justify-center text-center bg-green-50 px-6">
-        <div class="max-w-3xl">
-            <h1 class="text-5xl font-bold text-blue-900 mb-6">เทคโนโลยีบำบัดน้ำเสีย เพื่ออนาคตที่ยั่งยืน</h1>
-            <p class="text-xl text-gray-800 mb-10">เครื่องบำบัดน้ำเสียประสิทธิภาพสูง ประหยัดพลังงาน เหมาะสำหรับโรงงานอุตสาหกรรมและชุมชน</p>
+    <section class="relative h-[calc(100vh-80px)] flex items-center justify-center text-center px-6">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&q=80&w=2000" 
+                 alt="Industrial Background" 
+                 class="w-full h-full object-cover">
+            <!-- Overlay to darken the image -->
+            <div class="absolute inset-0 bg-black/60"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 max-w-3xl">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
+                เทคโนโลยีบำบัดน้ำเสีย เพื่ออนาคตที่ยั่งยืน
+            </h1>
+            <p class="text-lg md:text-xl text-gray-200 mb-10">
+                เครื่องบำบัดน้ำเสียประสิทธิภาพสูง ประหยัดพลังงาน เหมาะสำหรับโรงงานอุตสาหกรรมและชุมชน
+            </p>
             
             <a href="https://line.me/ti/p/aIH6Ap8MMp" target="_blank" 
-               class="inline-block px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-bold rounded-full text-lg shadow-lg transition duration-300">
+               class="inline-block px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg text-lg shadow-lg transition duration-300">
                 ขอคำปรึกษาฟรี
             </a>
         </div>
     </section>
 
-    <footer class="py-8 bg-gray-50 border-t border-gray-200">
+    <footer class="py-8 bg-gray-100 border-t border-gray-200">
         <p class="text-center text-gray-600 text-sm">&copy; 2026 EcoPure Water Tech. All Rights Reserved.</p>
     </footer>
 
