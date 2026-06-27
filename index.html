@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Prompt', sans-serif; }
+        /* ปรับเมนูมือถือให้เรียงแถวเดียว */
         @media (max-width: 640px) {
             .nav-link { font-size: 0.65rem !important; padding-left: 0.15rem !important; padding-right: 0.15rem !important; }
             .login-btn { font-size: 0.65rem !important; padding: 0.2rem 0.4rem !important; }
@@ -16,27 +17,29 @@
 </head>
 <body class="bg-gray-50">
 
-    <header class="bg-white shadow-md sticky top-0 z-[100]">
+    <!-- Header ปรับให้มี z-index สูงสุดและ relative เพื่อให้กดได้แน่นอน -->
+    <header class="bg-white shadow-md sticky top-0 z-[100] relative">
         <div class="container mx-auto px-2 py-3 flex justify-between items-center">
             <a href="index.html" class="text-lg md:text-xl font-bold text-blue-900">EcoPure</a>
             
             <nav class="flex items-center space-x-1 sm:space-x-4">
-                <a href="index.html" class="nav-link text-blue-700 font-bold hover:text-blue-900 transition">หน้าแรก</a>
-                <a href="#" class="nav-link text-gray-600 hover:text-blue-600 transition">คุณสมบัติ</a>
-                <a href="#" class="nav-link text-gray-600 hover:text-blue-600 transition">สินค้า</a>
-                <a href="contact.html" class="nav-link text-gray-600 hover:text-blue-600 transition">ติดต่อ</a>
-                <a href="login.html" class="login-btn bg-blue-800 text-white rounded-md hover:bg-blue-900 transition font-medium">เข้าสู่ระบบ</a>
+                <a href="index.html" class="nav-link text-blue-700 font-bold hover:text-blue-900 transition relative z-[101]">หน้าแรก</a>
+                <a href="#" class="nav-link text-gray-600 hover:text-blue-600 transition relative z-[101]">คุณสมบัติ</a>
+                <a href="#" class="nav-link text-gray-600 hover:text-blue-600 transition relative z-[101]">สินค้า</a>
+                <a href="contact.html" class="nav-link text-gray-600 hover:text-blue-600 transition relative z-[101]">ติดต่อ</a>
+                <a href="login.html" class="login-btn bg-blue-800 text-white rounded-md hover:bg-blue-900 transition font-medium relative z-[101]">เข้าสู่ระบบ</a>
             </nav>
         </div>
     </header>
 
+    <!-- Hero Section -->
     <main class="relative h-[80vh] flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 bg-black/60 z-10"></div>
         <img src="https://images.unsplash.com/photo-1581092160607-ee22530dd90e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Industrial Background">
         
         <div class="relative z-20 text-center px-4 text-white">
-            <h1 class="text-2xl md:text-4xl font-bold mb-3">เทคโนโลยีบำบัดน้ำเสีย เพื่ออนาคตที่ยั่งยืน</h1>
-            <p class="text-sm md:text-lg mb-6">เครื่องบำบัดน้ำเสียประสิทธิภาพสูง ประหยัดพลังงาน เหมาะสำหรับโรงงานอุตสาหกรรมและชุมชน</p>
+            <h1 class="text-xl md:text-4xl font-bold mb-3">เทคโนโลยีบำบัดน้ำเสีย เพื่ออนาคตที่ยั่งยืน</h1>
+            <p class="text-xs md:text-lg mb-6">เครื่องบำบัดน้ำเสียประสิทธิภาพสูง ประหยัดพลังงาน เหมาะสำหรับโรงงานอุตสาหกรรมและชุมชน</p>
             <a href="contact.html" class="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg shadow-lg transition duration-300 text-xs md:text-sm">ขอคำปรึกษาฟรี</a>
         </div>
     </main>
