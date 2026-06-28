@@ -2,23 +2,20 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <title>Smart Water Monitor Dashboard | EcoPure</title>
+    <title>Smart Water Monitor Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { font-family: 'Sarabun', sans-serif; background: #f8fafc; }
-        .filter-bar { transition: height 2s ease-in-out; }
+        .filter-bar { transition: height 7s ease-in-out; }
     </style>
 </head>
 <body class="p-8">
 
 <div class="max-w-6xl mx-auto bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
     <div class="flex justify-between items-center mb-8">
-        <div>
-            <h1 class="text-2xl font-bold text-slate-800">Smart Water Monitor Dashboard</h1>
-        </div>
+        <h1 class="text-2xl font-bold text-slate-800">Smart Water Monitor Dashboard</h1>
         <div class="flex gap-3">
             <button onclick="stopSystem()" class="bg-red-500 text-white px-5 py-2 rounded-xl font-bold hover:bg-red-600">🛑 ปิดเครื่อง</button>
-            <button onclick="pauseSystem()" class="bg-amber-400 text-white px-5 py-2 rounded-xl font-bold hover:bg-amber-500">⏸ หยุดชั่วคราว</button>
             <button onclick="startSystem()" class="bg-blue-600 text-white px-5 py-2 rounded-xl font-bold hover:bg-blue-700">▶ เริ่มการบำบัด</button>
         </div>
     </div>
@@ -26,21 +23,21 @@
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div class="lg:col-span-2 space-y-8">
             <div>
-                <h3 class="font-bold text-slate-700 mb-4">1. เลือกแหล่งกำเนิดน้ำเสียที่ต้องการทดสอบ</h3>
+                <h3 class="font-bold text-slate-700 mb-4">1. เลือกแหล่งกำเนิดน้ำเสีย</h3>
                 <div id="source-list" class="grid gap-3">
                     <div onclick="selectWater(this, 5.6, 155, 75)" class="source-card cursor-pointer border-2 border-blue-500 bg-blue-50 p-4 rounded-xl transition">
                         <span class="font-bold">🏠 น้ำเสียจากครัวเรือน</span>
                         <p class="text-xs text-slate-500">pH: 5.6 | ความขุ่น: 155 NTU | กลิ่น: 75%</p>
                     </div>
                     <div onclick="selectWater(this, 4.2, 480, 98)" class="source-card cursor-pointer border border-slate-200 p-4 rounded-xl hover:border-blue-300 transition">
-                        <span class="font-bold">🍳 น้ำทิ้งร้านอาหารปนเปื้อนไขมัน</span>
+                        <span class="font-bold">🍳 น้ำทิ้งร้านอาหาร</span>
                         <p class="text-xs text-slate-500">pH: 4.2 | ความขุ่น: 480 NTU | กลิ่น: 98%</p>
                     </div>
                 </div>
             </div>
 
             <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
-                <h3 class="font-bold text-slate-700 mb-4">2. แอนิเมชันห้องกรอง (Physical Filter Assembly)</h3>
+                <h3 class="font-bold text-slate-700 mb-4">2. แอนิเมชันห้องกรอง</h3>
                 <div class="flex justify-between h-40 bg-white p-4 rounded-xl border border-slate-200 items-end">
                     <div class="text-center w-20"><div class="h-24 bg-slate-100 w-full rounded relative"><div id="barA" class="filter-bar absolute bottom-0 w-full bg-slate-400 h-0"></div></div><p class="text-[10px] font-bold mt-2">SEDIMENT</p></div>
                     <div class="text-center w-20"><div class="h-24 bg-slate-100 w-full rounded relative"><div id="barB" class="filter-bar absolute bottom-0 w-full bg-teal-400 h-0"></div></div><p class="text-[10px] font-bold mt-2">CARBON</p></div>
@@ -51,42 +48,42 @@
 
         <div class="space-y-4">
             <h3 class="font-bold text-slate-700">3. แผงวัดค่าข้อมูล (Telemetry)</h3>
-            <div class="bg-orange-50 p-4 rounded-xl border border-orange-100"><p class="text-xs text-orange-600 font-bold">ค่าความเป็นกรด-ด่าง (pH)</p><p id="val-ph" class="text-2xl font-bold">0.0</p></div>
-            <div class="bg-yellow-50 p-4 rounded-xl border border-yellow-100"><p class="text-xs text-yellow-600 font-bold">ความขุ่น (Turbidity)</p><p id="val-turb" class="text-2xl font-bold">0 NTU</p></div>
-            <div class="bg-red-50 p-4 rounded-xl border border-red-100"><p class="text-xs text-red-600 font-bold">ดัชนีกลิ่นเหม็น</p><p id="val-odor" class="text-2xl font-bold">0%</p></div>
+            <div class="bg-orange-50 p-4 rounded-xl border border-orange-100"><p class="text-xs text-orange-600 font-bold">ค่าความเป็นกรด-ด่าง (pH)</p><p id="val-ph" class="text-2xl font-bold">5.6</p></div>
+            <div class="bg-yellow-50 p-4 rounded-xl border border-yellow-100"><p class="text-xs text-yellow-600 font-bold">ความขุ่น (Turbidity)</p><p id="val-turb" class="text-2xl font-bold">155 NTU</p></div>
+            <div class="bg-red-50 p-4 rounded-xl border border-red-100"><p class="text-xs text-red-600 font-bold">ดัชนีกลิ่นเหม็น</p><p id="val-odor" class="text-2xl font-bold">75%</p></div>
         </div>
     </div>
 </div>
 
 <script>
-    let currentData = { ph: 5.6, turb: 155, odor: 75 }; // ค่าเริ่มต้น
+    let currentData = { ph: 5.6, turb: 155, odor: 75 };
 
     function selectWater(el, ph, turb, odor) {
         currentData = { ph, turb, odor };
+        document.getElementById('val-ph').innerText = ph;
+        document.getElementById('val-turb').innerText = turb + " NTU";
+        document.getElementById('val-odor').innerText = odor + "%";
+        
         document.querySelectorAll('.source-card').forEach(c => c.className = "source-card cursor-pointer border border-slate-200 p-4 rounded-xl hover:border-blue-300 transition");
         el.className = "source-card cursor-pointer border-2 border-blue-500 bg-blue-50 p-4 rounded-xl transition";
     }
 
     function startSystem() {
-        // อัปเดตตัวเลข
-        document.getElementById('val-ph').innerText = currentData.ph;
-        document.getElementById('val-turb').innerText = currentData.turb + " NTU";
-        document.getElementById('val-odor').innerText = currentData.odor + "%";
-        
-        // อัปเดตแอนิเมชันถังกรอง
         document.getElementById('barA').style.height = '80%';
         document.getElementById('barB').style.height = '60%';
         document.getElementById('barC').style.height = '90%';
+        
+        setTimeout(() => {
+            document.getElementById('val-ph').innerText = "7.0";
+            document.getElementById('val-turb').innerText = "2 NTU";
+            document.getElementById('val-odor').innerText = "5%";
+            alert("ระบบบำบัดเสร็จสิ้น!");
+        }, 7000);
     }
 
     function stopSystem() {
-        document.getElementById('val-ph').innerText = "0.0";
-        document.getElementById('val-turb').innerText = "0 NTU";
-        document.getElementById('val-odor').innerText = "0%";
-        document.querySelectorAll('.filter-bar').forEach(b => b.style.height = '0');
+        location.reload(); // รีเซ็ตทุกอย่าง
     }
-
-    function pauseSystem() { alert("ระบบหยุดพักชั่วคราว"); }
 </script>
 </body>
 </html>
