@@ -8,30 +8,42 @@
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Prompt', sans-serif; }
+        /* ตั้งค่ารูปภาพพื้นหลัง */
+        .hero-bg {
+            background-image: url('ai.jpg'); /* ตรวจสอบว่าชื่อไฟล์รูปตรงกับที่บันทึกไว้ */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
     </style>
 </head>
-<body class="bg-white text-black flex flex-col min-h-screen">
+<body class="text-white">
 
-    <header class="bg-white shadow-sm sticky top-0 z-[1000]">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-blue-800">EcoPure</div>
+    <header class="absolute top-0 w-full z-10">
+        <div class="container mx-auto px-4 py-6 flex justify-between items-center">
+            <div class="text-2xl font-bold">EcoPure</div>
             <nav>
-                <ul class="flex items-center space-x-6 text-sm font-medium text-black">
-                    <li><a href="index.html" class="text-blue-800 border-b-2 border-blue-800 pb-1">หน้าแรก</a></li>
-                    <li><a href="features.html" class="hover:text-blue-600 transition">คุณสมบัติ</a></li>
-                    <li><a href="products.html" class="hover:text-blue-600 transition">สินค้าของพวกเรา</a></li>
-                    <li><a href="contact.html" class="hover:text-blue-600 transition">ติดต่อเรา</a></li>
-                    <li><a href="login.html" class="bg-blue-800 text-white px-4 py-2 rounded-md hover:bg-blue-900 transition">เข้าสู่ระบบ</a></li>
+                <ul class="flex items-center space-x-6 text-sm font-medium">
+                    <li><a href="index.html" class="border-b-2 pb-1">หน้าแรก</a></li>
+                    <li><a href="features.html" class="hover:text-blue-200 transition">คุณสมบัติ</a></li>
+                    <li><a href="products.html" class="hover:text-blue-200 transition">สินค้า</a></li>
+                    <li><a href="contact.html" class="hover:text-blue-200 transition">ติดต่อ</a></li>
+                    <li><a href="login.html" class="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 transition">เข้าสู่ระบบ</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="flex-grow flex items-center justify-center py-20 bg-white">
-        <div class="text-center px-6 max-w-3xl">
-            <h1 class="text-4xl md:text-5xl font-bold mb-6 text-blue-800 leading-tight">เทคโนโลยีบำบัดน้ำเสีย เพื่ออนาคตที่ยั่งยืน</h1>
-            <p class="text-lg md:text-xl mb-8 font-normal text-black">เครื่องบำบัดน้ำเสียประสิทธิภาพสูง ประหยัดพลังงาน เหมาะสำหรับโรงงานอุตสาหกรรมและชุมชน</p>
-            <a href="contact.html" class="inline-block bg-blue-800 hover:bg-blue-900 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition duration-300">ติดต่อข้อมูล</a>
+    <main class="hero-bg h-screen flex items-center justify-center relative">
+        <div class="absolute inset-0 bg-black opacity-40"></div>
+        
+        <div class="relative z-10 text-center px-4">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">เทคโนโลยีบำบัดน้ำเสีย เพื่ออนาคตที่ยั่งยืน</h1>
+            <p class="text-xl mb-8 opacity-90">เครื่องบำบัดน้ำเสียประสิทธิภาพสูง ประหยัดพลังงาน เป็นมิตรต่อสิ่งแวดล้อม</p>
+            <div class="space-x-4">
+                <a href="products.html" class="bg-white text-blue-900 py-3 px-8 rounded-full font-bold hover:bg-blue-50 transition">ดูสินค้าของเรา</a>
+                <a href="contact.html" class="border-2 border-white py-3 px-8 rounded-full font-bold hover:bg-white hover:text-blue-900 transition">ติดต่อสอบถาม</a>
+            </div>
         </div>
     </main>
 
