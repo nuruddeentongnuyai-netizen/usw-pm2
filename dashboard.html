@@ -9,13 +9,20 @@
 
     <div class="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-sm border">
         
-        <h3 class="font-bold text-lg mb-4">1. เลือกแหล่งกำเนิดน้ำเสีย</h3>
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-2xl font-bold">Smart Water Monitor Dashboard</h1>
+            <div class="flex gap-2">
+                <button class="bg-red-500 text-white px-4 py-2 rounded-lg font-bold">🛑 ปิดเครื่องบำบัด</button>
+                <button class="bg-amber-400 text-white px-4 py-2 rounded-lg font-bold">⏸ หยุดชั่วคราว</button>
+            </div>
+        </div>
+
+        <h3 class="font-bold text-lg mb-4">1. เลือกแหล่งกำเนิดน้ำเสียที่ต้องการทดสอบ</h3>
         <div id="selector" class="space-y-4 mb-8">
             <div onclick="updateDashboard(this, 5.6, 155)" class="source-card cursor-pointer border-2 border-blue-600 bg-blue-50 p-4 rounded-xl transition">
                 <span class="font-bold">🏠 น้ำเสียจากครัวเรือน (Graywater)</span>
                 <p class="text-sm text-slate-600">pH: 5.6 | ความขุ่น: 155 NTU</p>
             </div>
-            
             <div onclick="updateDashboard(this, 4.2, 480)" class="source-card cursor-pointer border border-slate-200 p-4 rounded-xl hover:border-blue-300 transition">
                 <span class="font-bold">🍳 น้ำทิ้งร้านอาหารปนเปื้อนไขมัน</span>
                 <p class="text-sm text-slate-600">pH: 4.2 | ความขุ่น: 480 NTU</p>
@@ -23,7 +30,7 @@
         </div>
 
         <h3 class="font-bold text-lg mb-4">3. แผงวัดค่าข้อมูล (Telemetry)</h3>
-        <div class="grid gap-4">
+        <div class="grid grid-cols-2 gap-4">
             <div class="bg-orange-50 p-6 rounded-xl border border-orange-100">
                 <p class="text-sm text-orange-700 font-bold">ค่าความเป็นกรด-ด่าง (pH)</p>
                 <p id="display-ph" class="text-3xl font-bold">5.6</p>
@@ -37,11 +44,11 @@
 
     <script>
         function updateDashboard(element, ph, turb) {
-            // 1. เปลี่ยนตัวเลขบนหน้าจอ
+            // อัปเดตตัวเลข
             document.getElementById('display-ph').innerText = ph;
             document.getElementById('display-turb').innerText = turb;
 
-            // 2. เปลี่ยนสไตล์การ์ดที่เลือก (ให้ดูว่าอันไหนถูกเลือก)
+            // ปรับไฮไลท์การเลือก
             document.querySelectorAll('.source-card').forEach(card => {
                 card.className = "source-card cursor-pointer border border-slate-200 p-4 rounded-xl hover:border-blue-300 transition";
             });
