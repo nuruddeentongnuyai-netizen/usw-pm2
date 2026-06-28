@@ -53,7 +53,7 @@
                 </div>
             </div>
 
-            <div id="console-box" class="bg-slate-900 p-6 rounded-3xl text-white font-mono text-sm hidden">
+            <div id="console-box" class="bg-slate-900 p-6 rounded-3xl text-white font-mono text-sm hidden shadow-xl">
                 <h2 class="font-bold text-teal-400 mb-4 flex items-center gap-2">🎛 บันทึกระบบกรองน้ำ (Console Diagnostics)</h2>
                 <div id="log-container" class="space-y-2"></div>
             </div>
@@ -61,9 +61,18 @@
 
         <div class="space-y-4">
             <h2 class="text-lg font-semibold text-slate-700 mb-2">3. แผงวัดค่าข้อมูล</h2>
-            <div class="bg-white p-5 rounded-2xl border border-slate-100"><div><p class="text-xs text-slate-400">ค่า pH</p><p id="val-ph" class="text-2xl font-bold">0.0</p></div></div>
-            <div class="bg-white p-5 rounded-2xl border border-slate-100"><div><p class="text-xs text-slate-400">ความขุ่น (NTU)</p><p id="val-turb" class="text-0">0</p></div></div>
-            <div class="bg-white p-5 rounded-2xl border border-slate-100"><div><p class="text-xs text-slate-400">ดัชนีกลิ่นเหม็น</p><p id="val-odor" class="text-2xl font-bold">0%</p></div></div>
+            <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm">
+                <p class="text-xs text-slate-400 font-medium">ค่า pH</p>
+                <p id="val-ph" class="text-3xl font-bold text-slate-800">0.0</p>
+            </div>
+            <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm">
+                <p class="text-xs text-slate-400 font-medium">ความขุ่น (NTU)</p>
+                <p id="val-turb" class="text-3xl font-bold text-slate-800">0</p>
+            </div>
+            <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm">
+                <p class="text-xs text-slate-400 font-medium">ดัชนีกลิ่นเหม็น</p>
+                <p id="val-odor" class="text-3xl font-bold text-slate-800">0%</p>
+            </div>
         </div>
     </div>
 </div>
@@ -96,7 +105,7 @@
         setTimeout(() => addLog("⚖️ [ระบบควบคุมเกณฑ์เคมี] ปรับค่า pH ให้เป็นกลาง..."), 2000);
         setTimeout(() => addLog("🔮 [รังสี UV-C] ฉายแสงฆ่าแบคทีเรียและสปอร์..."), 4000);
         setTimeout(() => {
-            addLog("🎉 [บำบัดสมบูรณ์] คุณภาพผ่านเกณฑ์มาตรฐาน!");
+            addLog("🎉 [บำบัดสมบูรณ์] คุณภาพผ่านเกณฑ์มาตรฐานกระทรวงสิ่งแวดล้อมเสร็จสิ้น!");
             document.getElementById('val-ph').innerText = "7.2";
             document.getElementById('val-turb').innerText = "1.6";
             document.getElementById('val-odor').innerText = "0%";
