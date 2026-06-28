@@ -13,28 +13,25 @@
         <div class="flex flex-col md:flex-row justify-between items-start mb-8 gap-4">
             <div>
                 <h1 class="text-2xl font-bold text-slate-800">Smart Water Monitor Dashboard</h1>
-                <p class="text-slate-500 text-sm">ระบบจำลองเครื่องตรวจสอบคุณภาพน้ำและถังวิเคราะห์ฟิสิกส์-เคมี</p>
             </div>
             <div class="flex gap-3">
-                <button id="powerBtn" onclick="togglePower()" class="bg-red-500 text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-red-600">🛑 ปิดเครื่องบำบัด</button>
-                <button id="pauseBtn" onclick="togglePause()" class="bg-amber-400 text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-amber-500">⏸ หยุดชั่วคราว</button>
+                <button id="powerBtn" onclick="togglePower()" class="bg-red-500 text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-red-600 transition">🛑 ปิดเครื่องบำบัด</button>
+                <button id="pauseBtn" onclick="togglePause()" class="bg-amber-400 text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-amber-500 transition">⏸ หยุดชั่วคราว</button>
             </div>
         </div>
 
-        <div id="statusBadge" class="inline-block px-4 py-1 mb-6 rounded-full text-sm font-bold bg-green-100 text-green-700">
-            🟢 สถานะ: กำลังทำงานปกติ
-        </div>
+        <div id="statusBadge" class="inline-block px-4 py-1 mb-6 rounded-full text-sm font-bold bg-green-100 text-green-700">🟢 สถานะ: กำลังทำงานปกติ</div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div class="lg:col-span-2 space-y-8">
                 <div>
                     <h3 class="font-bold text-slate-800 mb-4">1. เลือกแหล่งกำเนิดน้ำเสีย</h3>
                     <div id="selector" class="space-y-4">
-                        <div onclick="selectSource(this, 5.6, 155)" class="cursor-pointer border-2 border-blue-600 bg-blue-50 p-4 rounded-xl">
+                        <div onclick="selectSource(this, 5.6, 155)" class="source-card cursor-pointer border-2 border-blue-600 bg-blue-50 p-4 rounded-xl transition">
                             <span class="font-bold">🏠 น้ำเสียจากครัวเรือน (Graywater)</span>
                             <p class="text-xs text-slate-500">pH: 5.6 | ความขุ่น: 155 NTU</p>
                         </div>
-                        <div onclick="selectSource(this, 4.2, 480)" class="cursor-pointer border border-slate-200 p-4 rounded-xl hover:border-blue-300">
+                        <div onclick="selectSource(this, 4.2, 480)" class="source-card cursor-pointer border border-slate-200 p-4 rounded-xl hover:border-blue-300 transition">
                             <span class="font-bold">🍳 น้ำทิ้งร้านอาหารปนเปื้อนไขมัน</span>
                             <p class="text-xs text-slate-500">pH: 4.2 | ความขุ่น: 480 NTU</p>
                         </div>
@@ -43,7 +40,7 @@
 
                 <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
                     <div class="flex justify-between items-center mb-6">
-                        <h3 class="font-bold text-slate-800">2. แอนิเมชันห้องกรอง (Physical Filter Assembly)</h3>
+                        <h3 class="font-bold text-slate-800">2. แอนิเมชันห้องกรอง</h3>
                         <button onclick="startSimulation()" class="bg-blue-600 text-white px-4 py-1 rounded-lg text-sm font-bold hover:bg-blue-700">เริ่มการบำบัด</button>
                     </div>
                     <div class="flex justify-between items-center bg-white p-6 rounded-xl border border-slate-200">
@@ -60,11 +57,11 @@
                 <h3 class="font-bold text-slate-800">3. แผงวัดค่าข้อมูล (Telemetry)</h3>
                 <div class="bg-orange-50 p-4 rounded-xl border border-orange-100">
                     <p class="text-xs text-orange-600 font-bold">ค่าความเป็นกรด-ด่าง (pH)</p>
-                    <p id="phDisplay" class="text-2xl font-bold">5.6</p>
+                    <p id="phValue" class="text-2xl font-bold">5.6</p>
                 </div>
                 <div class="bg-yellow-50 p-4 rounded-xl border border-yellow-100">
                     <p class="text-xs text-yellow-600 font-bold">ความขุ่น (Turbidity)</p>
-                    <p id="turbDisplay" class="text-2xl font-bold">155.0</p>
+                    <p id="turbidityValue" class="text-2xl font-bold">155.0</p>
                 </div>
             </div>
         </div>
@@ -75,19 +72,19 @@
         let isPaused = false;
 
         function selectSource(el, ph, turb) {
-            document.querySelectorAll('#selector > div').forEach(div => div.className = "cursor-pointer border border-slate-200 p-4 rounded-xl hover:border-blue-300");
-            el.className = "cursor-pointer border-2 border-blue-600 bg-blue-50 p-4 rounded-xl";
-            document.getElementById('phDisplay').innerText = ph;
-            document.getElementById('turbDisplay').innerText = turb;
+            // ปรับสี Border ของกล่องที่เลือก
+            document.querySelectorAll('.source-card').forEach(div => div.className = "source-card cursor-pointer border border-slate-200 p-4 rounded-xl hover:border-blue-300 transition");
+            el.className = "source-card cursor-pointer border-2 border-blue-600 bg-blue-50 p-4 rounded-xl transition";
+            
+            // อัปเดตค่า Telemetry
+            document.getElementById('phValue').innerText = ph;
+            document.getElementById('turbidityValue').innerText = turb;
         }
 
         function togglePower() {
             isRunning = !isRunning;
-            const btn = document.getElementById('powerBtn');
-            const badge = document.getElementById('statusBadge');
-            btn.innerHTML = isRunning ? "🛑 ปิดเครื่องบำบัด" : "▶ เปิดเครื่องบำบัด";
-            badge.innerText = isRunning ? "🟢 สถานะ: กำลังทำงานปกติ" : "🔴 สถานะ: ปิดเครื่อง";
-            badge.className = isRunning ? "inline-block px-4 py-1 mb-6 rounded-full text-sm font-bold bg-green-100 text-green-700" : "inline-block px-4 py-1 mb-6 rounded-full text-sm font-bold bg-red-100 text-red-700";
+            document.getElementById('powerBtn').innerText = isRunning ? "🛑 ปิดเครื่องบำบัด" : "▶ เปิดเครื่องบำบัด";
+            document.getElementById('statusBadge').innerText = isRunning ? "🟢 สถานะ: กำลังทำงานปกติ" : "🔴 สถานะ: ปิดเครื่อง";
         }
 
         function togglePause() {
