@@ -3,38 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoPure | สินค้าของเรา</title>
+    <title>EcoPure | ระบบบำบัดน้ำเสียอัจฉริยะ</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>body { font-family: 'Prompt', sans-serif; }</style>
+    <style>
+        body { font-family: 'Prompt', sans-serif; }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="text-gray-800">
+
     <header class="bg-white shadow-sm sticky top-0 z-[1000]">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="text-xl font-bold text-blue-800">EcoPure</div>
-            <nav><ul class="flex items-center space-x-4 text-sm font-medium">
-                <li><a href="index.html" class="hover:text-blue-600">หน้าแรก</a></li>
-                <li><a href="features.html" class="hover:text-blue-600">คุณสมบัติ</a></li>
-                <li><a href="products.html" class="text-blue-700 border-b-2 border-blue-700 pb-1">สินค้า</a></li>
-                <li><a href="about.html" class="hover:text-blue-600">เกี่ยวกับ</a></li>
-                <li><a href="contact.html" class="hover:text-blue-600">ติดต่อ</a></li>
-                <li><a href="login.html" class="bg-blue-800 text-white px-3 py-1 rounded">เข้าสู่ระบบ</a></li>
-            </ul></nav>
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-blue-800">EcoPure</div>
+            <nav>
+                <ul class="flex items-center space-x-6 text-sm font-medium text-gray-700">
+                    <li><a href="index.html" class="text-blue-700 border-b-2 border-blue-700 pb-1">หน้าแรก</a></li>
+                    <li><a href="features.html" class="hover:text-blue-600 transition">คุณสมบัติ</a></li>
+                    <li><a href="products.html" class="hover:text-blue-600 transition">สินค้า</a></li>
+                    <li><a href="about.html" class="hover:text-blue-600 transition">เกี่ยวกับ</a></li>
+                    <li><a href="contact.html" class="hover:text-blue-600 transition">ติดต่อเรา</a></li>
+                    <li><a href="login.html" class="bg-blue-800 text-white px-4 py-2 rounded-md hover:bg-blue-900 transition">เข้าสู่ระบบ</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <main class="py-12 px-6 container mx-auto">
-        <h2 class="text-3xl font-bold text-center mb-8">สินค้าของเรา</h2>
-        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div class="bg-white p-8 rounded-xl shadow-lg border hover:shadow-xl transition">
-                <h3 class="font-bold text-2xl text-blue-800 mb-2">EcoPure Compact</h3>
-                <p class="text-gray-600">ระบบบำบัดน้ำเสียขนาดกะทัดรัด เหมาะสำหรับอาคารพาณิชย์และชุมชนขนาดเล็ก</p>
-            </div>
-            <div class="bg-white p-8 rounded-xl shadow-lg border hover:shadow-xl transition">
-                <h3 class="font-bold text-2xl text-blue-800 mb-2">EcoPure Pro</h3>
-                <p class="text-gray-600">โซลูชันระดับมืออาชีพสำหรับโรงงานอุตสาหกรรม รองรับน้ำเสียปริมาณมากและสารปนเปื้อนสูง</p>
-            </div>
+    <main class="relative h-[calc(100vh-73px)] w-full overflow-hidden flex items-center justify-center">
+        
+        <!-- Background Image (Factory) -->
+        <img src="https://images.unsplash.com/photo-1581092160607-ee22821ee8f7?auto=format&fit=crop&w=1920&q=80" 
+             class="absolute inset-0 w-full h-full object-cover" 
+             alt="Industrial Factory Background"
+             onerror="this.src='https://placehold.co/1920x1080/1e293b/ffffff?text=EcoPure+Factory'">
+
+        <!-- Overlay Layer for readability -->
+        <div class="absolute inset-0 bg-black/60 z-10"></div>
+        
+        <!-- Hero Content -->
+        <div class="relative z-20 text-center px-6 text-white max-w-3xl">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">เทคโนโลยีบำบัดน้ำเสีย เพื่ออนาคตที่ยั่งยืน</h1>
+            <p class="text-lg md:text-xl mb-8 font-light text-gray-200">ระบบมอนิเตอร์และบริหารจัดการน้ำเสียประสิทธิภาพสูง พร้อมให้คุณควบคุมได้ทุกที่ทุกเวลา</p>
+            <a href="login.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-lg shadow-lg transition duration-300">เริ่มใช้งานระบบ</a>
         </div>
     </main>
+
 </body>
 </html>
