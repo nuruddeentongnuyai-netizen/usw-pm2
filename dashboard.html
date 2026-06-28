@@ -56,6 +56,7 @@
 </div>
 
 <script>
+    // เก็บค่าเริ่มต้นไว้ที่ครัวเรือน
     let currentData = { ph: 5.6, turb: 155, odor: 75 };
 
     function selectWater(el, ph, turb, odor) {
@@ -69,20 +70,22 @@
     }
 
     function startSystem() {
+        // เริ่มแอนิเมชัน
         document.getElementById('barA').style.height = '80%';
         document.getElementById('barB').style.height = '60%';
         document.getElementById('barC').style.height = '90%';
         
+        // รอ 7 วินาทีแล้วเปลี่ยนค่าเป็นน้ำสะอาด
         setTimeout(() => {
             document.getElementById('val-ph').innerText = "7.0";
             document.getElementById('val-turb').innerText = "2 NTU";
             document.getElementById('val-odor').innerText = "5%";
-            alert("ระบบบำบัดเสร็จสิ้น!");
+            // ไม่มี alert เด้งแล้ว
         }, 7000);
     }
 
     function stopSystem() {
-        location.reload(); // รีเซ็ตทุกอย่าง
+        location.reload(); // รีเซ็ตหน้าเว็บเพื่อเริ่มใหม่
     }
 </script>
 </body>
