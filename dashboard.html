@@ -10,11 +10,12 @@
     </style>
 </head>
 <body class="p-8">
+
 <div class="max-w-6xl mx-auto bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
     <div class="flex justify-between items-center mb-8">
         <h1 class="text-2xl font-bold text-slate-800">Smart Water Monitor Dashboard</h1>
         <div class="flex gap-3">
-            <button onclick="location.reload()" class="bg-red-500 text-white px-5 py-2 rounded-xl font-bold hover:bg-red-600">🛑 ปิดเครื่อง</button>
+            <button onclick="stopSystem()" class="bg-red-500 text-white px-5 py-2 rounded-xl font-bold hover:bg-red-600">🛑 ปิดเครื่อง (รีเซ็ต)</button>
             <button onclick="startSystem()" class="bg-blue-600 text-white px-5 py-2 rounded-xl font-bold hover:bg-blue-700">▶ เริ่มการบำบัด</button>
         </div>
     </div>
@@ -55,26 +56,41 @@
 </div>
 
 <script>
-    let currentData = { ph: 5.6, turb: 155, odor: 75 };
-
+    // ฟังก์ชันเลือกแหล่งน้ำ: รีเซ็ตทุกอย่างแล้วแสดงค่าใหม่
     function selectWater(el, ph, turb, odor) {
-        currentData = { ph, turb, odor };
+        // 1. อัปเดตค่า Telemetry
         document.getElementById('val-ph').innerText = ph;
         document.getElementById('val-turb').innerText = turb + " NTU";
         document.getElementById('val-odor').innerText = odor + "%";
+        
+        // 2. รีเซ็ตแอนิเมชันให้เป็น 0 ทันที
+        document.getElementById('barA').style.height = '0%';
+        document.getElementById('barB').style.height = '0%';
+        document.getElementById('barC').style.height = '0%';
+        
+        // 3. ปรับ Highlight การ์ด
         document.querySelectorAll('.source-card').forEach(c => c.className = "source-card cursor-pointer border border-slate-200 p-4 rounded-xl hover:border-blue-300 transition");
         el.className = "source-card cursor-pointer border-2 border-blue-500 bg-blue-50 p-4 rounded-xl transition";
     }
 
+    // ฟังก์ชันเริ่มการบำบัด
     function startSystem() {
+        // เริ่มแอนิเมชัน
         document.getElementById('barA').style.height = '80%';
         document.getElementById('barB').style.height = '60%';
         document.getElementById('barC').style.height = '90%';
+        
+        // รอ 7 วินาที แล้วแสดงผลค่าสะอาด
         setTimeout(() => {
-            document.getElementById('val-ph').innerText = "7.0";
-            document.getElementById('val-turb').innerText = "2 NTU";
-            document.getElementById('val-odor').innerText = "5%";
+            document.getElementById('val-ph').innerText = "7.2";
+            document.getElementById('val-turb').innerText = "2.8 NTU";
+            document.getElementById('val-odor').innerText = "0%";
         }, 7000);
+    }
+
+    // ฟังก์ชันหยุด/รีเซ็ต
+    function stopSystem() {
+        location.reload();
     }
 </script>
 </body>
