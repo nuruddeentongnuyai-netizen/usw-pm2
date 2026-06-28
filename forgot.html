@@ -2,7 +2,6 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcoPure - กู้คืนรหัสผ่าน</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
@@ -11,9 +10,17 @@
 <body class="bg-slate-50 flex items-center justify-center min-h-screen p-4">
     <div class="bg-white p-8 rounded-3xl shadow-xl w-full max-w-sm text-center">
         <h2 class="text-2xl font-bold mb-4 text-slate-800">กู้คืนรหัสผ่าน</h2>
-        <p class="text-sm text-slate-500 mb-6">กรุณาติดต่อผู้ดูแลระบบเพื่อขอรับรหัสผ่านใหม่ หรือตรวจสอบอีเมลของคุณ</p>
-        
+        <p class="text-sm text-slate-500 mb-6">ระบบจะล้างข้อมูลการใช้งานเครื่องนี้ เพื่อความปลอดภัย กรุณาติดต่อผู้ดูแลระบบ</p>
+        <button onclick="clearData()" class="block w-full bg-red-500 text-white py-3 rounded-2xl font-bold hover:bg-red-600 transition mb-4">ล้างข้อมูลในเครื่องนี้</button>
         <a href="login.html" class="block w-full bg-slate-200 text-slate-700 py-3 rounded-2xl font-bold hover:bg-slate-300 transition">กลับหน้าเข้าสู่ระบบ</a>
     </div>
+
+    <script>
+        function clearData() {
+            localStorage.clear();
+            alert("ล้างข้อมูลรหัสผ่านเก่าในเครื่องนี้เรียบร้อยแล้ว!");
+            window.location.href = "login.html";
+        }
+    </script>
 </body>
 </html>
