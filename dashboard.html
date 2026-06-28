@@ -67,7 +67,6 @@
 </div>
 
 <script>
-    // ฟังก์ชัน Log ไม่กระทบปุ่มอื่น
     function addLog(message, colorClass) {
         const logTable = document.getElementById('log-table');
         const now = new Date().toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
@@ -77,6 +76,11 @@
     }
 
     function selectWater(el, ph, turb, odor, name) {
+        // รีเซ็ตแอนิเมชันให้เป็น 0 ทันทีที่เลือก
+        document.getElementById('barA').style.height = '0%';
+        document.getElementById('barB').style.height = '0%';
+        document.getElementById('barC').style.height = '0%';
+        
         document.getElementById('val-ph').innerText = ph;
         document.getElementById('val-turb').innerText = turb;
         document.getElementById('val-odor').innerText = odor + "%";
@@ -86,10 +90,18 @@
     }
 
     function startSystem() {
-        addLog("เริ่มการบำบัด...", "text-blue-400");
-        document.getElementById('barA').style.height = '85%';
-        document.getElementById('barB').style.height = '70%';
-        document.getElementById('barC').style.height = '95%';
+        // รีเซ็ตเพื่อความชัวร์
+        document.getElementById('barA').style.height = '0%';
+        document.getElementById('barB').style.height = '0%';
+        document.getElementById('barC').style.height = '0%';
+        
+        setTimeout(() => {
+            addLog("เริ่มการบำบัด...", "text-blue-400");
+            document.getElementById('barA').style.height = '85%';
+            document.getElementById('barB').style.height = '70%';
+            document.getElementById('barC').style.height = '95%';
+        }, 50);
+
         setTimeout(() => addLog("ระบบคาร์บอนทำงาน...", "text-teal-300"), 2000);
         setTimeout(() => {
             addLog("บำบัดสำเร็จ", "text-green-400");
