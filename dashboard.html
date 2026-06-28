@@ -15,8 +15,8 @@
                 <h1 class="text-2xl font-bold text-slate-800">Smart Water Monitor Dashboard</h1>
             </div>
             <div class="flex gap-3">
-                <button id="powerBtn" onclick="togglePower()" class="bg-red-500 text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-red-600 transition">🛑 ปิดเครื่องบำบัด</button>
-                <button id="pauseBtn" onclick="togglePause()" class="bg-amber-400 text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-amber-500 transition">⏸ หยุดชั่วคราว</button>
+                <button id="powerBtn" onclick="togglePower()" class="bg-red-500 text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-red-600">🛑 ปิดเครื่องบำบัด</button>
+                <button id="pauseBtn" onclick="togglePause()" class="bg-amber-400 text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-amber-500">⏸ หยุดชั่วคราว</button>
             </div>
         </div>
 
@@ -61,7 +61,7 @@
                 </div>
                 <div class="bg-yellow-50 p-4 rounded-xl border border-yellow-100">
                     <p class="text-xs text-yellow-600 font-bold">ความขุ่น (Turbidity)</p>
-                    <p id="turbidityValue" class="text-2xl font-bold">155.0</p>
+                    <p id="turbValue" class="text-2xl font-bold">155.0</p>
                 </div>
             </div>
         </div>
@@ -72,13 +72,14 @@
         let isPaused = false;
 
         function selectSource(el, ph, turb) {
-            // ปรับสี Border ของกล่องที่เลือก
-            document.querySelectorAll('.source-card').forEach(div => div.className = "source-card cursor-pointer border border-slate-200 p-4 rounded-xl hover:border-blue-300 transition");
+            document.querySelectorAll('.source-card').forEach(div => {
+                div.className = "source-card cursor-pointer border border-slate-200 p-4 rounded-xl hover:border-blue-300 transition";
+            });
             el.className = "source-card cursor-pointer border-2 border-blue-600 bg-blue-50 p-4 rounded-xl transition";
             
-            // อัปเดตค่า Telemetry
+            // อัปเดตค่า Telemetry Board
             document.getElementById('phValue').innerText = ph;
-            document.getElementById('turbidityValue').innerText = turb;
+            document.getElementById('turbValue').innerText = turb;
         }
 
         function togglePower() {
