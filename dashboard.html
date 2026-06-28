@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <title>Smart Water Monitor Pro</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Sarabun', sans-serif; background: #f0f4f8; }
+        body { font-family: 'Kanit', sans-serif; background: #f0f4f8; }
         .filter-bar { transition: height 7s ease-in-out; }
     </style>
 </head>
@@ -15,8 +15,8 @@
 <div class="max-w-6xl mx-auto">
     <div class="flex justify-between items-end mb-8">
         <div>
-            <h1 class="text-3xl font-bold text-slate-800">ระบบติดตามคุณภาพน้ำอัจฉริยะ</h1>
-            <p class="text-slate-500">ตรวจสอบและบำบัดน้ำเสียด้วยระบบอัตโนมัติ</p>
+            <h1 class="text-3xl font-bold text-slate-800">Smart Water Monitor</h1>
+            <p class="text-slate-500">ระบบตรวจสอบและบำบัดน้ำเสียอัจฉริยะ</p>
         </div>
         <div class="flex gap-3">
             <button onclick="location.reload()" class="bg-rose-50 text-rose-600 px-6 py-2 rounded-xl font-semibold hover:bg-rose-100 transition">🛑 ปิดระบบ</button>
@@ -29,17 +29,17 @@
             <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
                 <h2 class="text-lg font-semibold mb-4 text-slate-700">1. เลือกแหล่งกำเนิดน้ำเสีย</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <button onclick="selectWater(this, 5.6, 155, 75, 'น้ำเสียจากครัวเรือน', 'พบสารแขวนลอยและแอมโมเนีย')" class="source-card text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-blue-400 transition">
+                    <button onclick="selectWater(this, 5.6, 155, 75, 'น้ำเสียจากครัวเรือน (Graywater)', 'พบสารแขวนลอยและแอมโมเนียตกค้าง')" class="source-card text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-blue-400 transition">
                         <p class="font-bold">🏠 น้ำเสียจากครัวเรือน</p>
                     </button>
-                    <button onclick="selectWater(this, 6.3, 85, 45, 'บ่อพักน้ำโรงเรียน', 'น้ำขังเน่าเสียจากเศษอาหาร')" class="source-card text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-blue-400 transition">
-                        <p class="font-bold">🏫 บ่อพักน้ำโรงเรียน</p>
+                    <button onclick="selectWater(this, 6.3, 85, 45, 'บ่อพักน้ำโรงเรียน', 'น้ำขังเน่าเสียจากใบไม้และเศษอาหาร')" class="source-card text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-blue-400 transition">
+                        <p class="font-bold">🏫 น้ำขังเน่าเสียในบ่อโรงเรียน</p>
                     </button>
-                    <button onclick="selectWater(this, 5.0, 210, 30, 'น้ำจากแปลงเกษตร', 'การปนเปื้อนปุ๋ยและเคมี')" class="source-card text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-blue-400 transition">
-                        <p class="font-bold">🌱 น้ำจากแปลงเกษตร</p>
+                    <button onclick="selectWater(this, 5.0, 210, 30, 'น้ำระบายจากแปลงเกษตร', 'มีการปนเปื้อนปุ๋ยและสารเคมี')" class="source-card text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-blue-400 transition">
+                        <p class="font-bold">🌱 น้ำระบายจากแปลงเกษตร</p>
                     </button>
-                    <button onclick="selectWater(this, 5.9, 360, 90, 'น้ำคลองในเมือง', 'น้ำเสียจากท่อระบายน้ำ')" class="source-card text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-blue-400 transition">
-                        <p class="font-bold">🚣 น้ำคลองในเมือง</p>
+                    <button onclick="selectWater(this, 5.9, 360, 90, 'น้ำคลองในเมือง', 'น้ำเสียจากท่อระบายน้ำใจกลางเมือง')" class="source-card text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-blue-400 transition">
+                        <p class="font-bold">🚣 น้ำคลองระบายน้ำใจกลางเมือง</p>
                     </button>
                 </div>
             </div>
@@ -47,67 +47,27 @@
             <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
                 <h2 class="text-lg font-semibold mb-6 text-slate-700">2. แอนิเมชันห้องกรองเครื่องบำบัด</h2>
                 <div class="flex justify-between items-end h-40 bg-slate-50 rounded-2xl p-6 mb-6">
-                    <div class="text-center w-24"><div class="h-24 bg-slate-200 w-full rounded-xl relative overflow-hidden"><div id="barA" class="filter-bar absolute bottom-0 w-full bg-slate-500 h-0"></div></div><p class="text-xs mt-3 font-bold text-slate-700">ตะกอน</p></div>
-                    <div class="text-center w-24"><div class="h-24 bg-slate-200 w-full rounded-xl relative overflow-hidden"><div id="barB" class="filter-bar absolute bottom-0 w-full bg-teal-400 h-0"></div></div><p class="text-xs mt-3 font-bold text-slate-700">คาร์บอน</p></div>
-                    <div class="text-center w-24"><div class="h-24 bg-slate-200 w-full rounded-xl relative overflow-hidden"><div id="barC" class="filter-bar absolute bottom-0 w-full bg-blue-500 h-0"></div></div><p class="text-xs mt-3 font-bold text-slate-700">UV/ฆ่าเชื้อ</p></div>
+                    <div class="text-center w-24"><div class="h-24 bg-slate-200 w-full rounded-xl relative overflow-hidden"><div id="barA" class="filter-bar absolute bottom-0 w-full bg-slate-500 h-0"></div></div><p class="text-xs mt-3 font-bold text-slate-700">กรองหยาบ</p></div>
+                    <div class="text-center w-24"><div class="h-24 bg-slate-200 w-full rounded-xl relative overflow-hidden"><div id="barB" class="filter-bar absolute bottom-0 w-full bg-teal-400 h-0"></div></div><p class="text-xs mt-3 font-bold text-slate-700">ลดสี-ดูดซับกลิ่น</p></div>
+                    <div class="text-center w-24"><div class="h-24 bg-slate-200 w-full rounded-xl relative overflow-hidden"><div id="barC" class="filter-bar absolute bottom-0 w-full bg-blue-500 h-0"></div></div><p class="text-xs mt-3 font-bold text-slate-700">ปรับ pH - ฆ่าเชื้อ UV</p></div>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                     <div class="bg-slate-50 p-4 rounded-xl border border-slate-100"><p class="text-xs font-bold text-slate-500 mb-1">ข้อมูลขาเข้า (Input)</p><p id="desc-input" class="text-sm text-slate-700">กรุณาเลือกแหล่งน้ำเสีย</p></div>
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100"><p class="text-xs font-bold text-green-600 mb-1">สถานะ (Output)</p><p id="desc-output" class="text-sm text-slate-700">รอการบำบัด...</p></div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100"><p class="text-xs font-bold text-green-600 mb-1">ผลลัพธ์ (Output)</p><p id="desc-output" class="text-sm text-slate-700">รอการบำบัด...</p></div>
                 </div>
             </div>
         </div>
 
         <div class="space-y-4">
             <h2 class="text-lg font-semibold text-slate-700 mb-2">3. แผงวัดค่าข้อมูล</h2>
-            <div class="bg-white p-5 rounded-2xl border border-slate-100"><div><p class="text-xs text-slate-400">ค่าความเป็นกรด-ด่าง (pH)</p><p id="val-ph" class="text-2xl font-bold">0.0</p></div></div>
-            <div class="bg-white p-5 rounded-2xl border border-slate-100"><div><p class="text-xs text-slate-400">ค่าความขุ่น (NTU)</p><p id="val-turb" class="text-2xl font-bold">0</p></div></div>
+            <div class="bg-white p-5 rounded-2xl border border-slate-100"><div><p class="text-xs text-slate-400">ค่า pH</p><p id="val-ph" class="text-2xl font-bold">0.0</p></div></div>
+            <div class="bg-white p-5 rounded-2xl border border-slate-100"><div><p class="text-xs text-slate-400">ความขุ่น (NTU)</p><p id="val-turb" class="text-2xl font-bold">0</p></div></div>
             <div class="bg-white p-5 rounded-2xl border border-slate-100"><div><p class="text-xs text-slate-400">ดัชนีกลิ่นเหม็น</p><p id="val-odor" class="text-2xl font-bold">0%</p></div></div>
 
-            <div class="bg-white p-5 rounded-2xl border border-slate-100 mt-6">
-                <h3 class="text-sm font-semibold text-slate-700 mb-3">📋 บันทึกการทำงานระบบ</h3>
+            <div class="bg-white p-5 rounded-2xl border border-slate-100 mt-6 shadow-sm">
+                <h3 class="text-sm font-semibold text-slate-700 mb-3">📋 บันทึกการกรองล่าสุด</h3>
                 <table class="w-full text-xs text-left">
-                    <thead><tr class="text-slate-400 border-b"><th class="pb-2">เวลา</th><th class="pb-2">สถานะ</th></tr></thead>
+                    <thead><tr class="text-slate-400 border-b"><th class="pb-2">เวลา</th><th class="pb-2">สถานะการทำงาน</th></tr></thead>
                     <tbody id="log-table">
-                        <tr><td class="py-2 text-slate-500">--:--</td><td class="py-2 text-slate-500">รอการทำงาน...</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    function selectWater(el, ph, turb, odor, inputDesc, detail) {
-        document.getElementById('val-ph').innerText = ph;
-        document.getElementById('val-turb').innerText = turb;
-        document.getElementById('val-odor').innerText = odor + "%";
-        document.getElementById('desc-input').innerText = inputDesc + ": " + detail;
-        document.getElementById('desc-output').innerText = "รอการเริ่มระบบ...";
-        document.getElementById('barA').style.height = '0%';
-        document.getElementById('barB').style.height = '0%';
-        document.getElementById('barC').style.height = '0%';
-        document.querySelectorAll('.source-card').forEach(c => c.style.borderColor = "#f1f5f9");
-        el.style.borderColor = "#60a5fa";
-    }
-
-    function startSystem() {
-        document.getElementById('barA').style.height = '85%';
-        document.getElementById('barB').style.height = '70%';
-        document.getElementById('barC').style.height = '95%';
-        document.getElementById('desc-output').innerText = "บำบัดเสร็จสิ้น: น้ำสะอาดพร้อมปล่อยสู่ธรรมชาติ";
-        
-        const log = document.getElementById('log-table');
-        log.innerHTML = `<tr><td class="py-1">เริ่ม</td><td class="py-1 text-blue-600">กำลังกรองตะกอน...</td></tr>
-                         <tr><td class="py-1">เสร็จ</td><td class="py-1 text-green-600">น้ำสะอาดได้มาตรฐาน</td></tr>`;
-        
-        setTimeout(() => {
-            document.getElementById('val-ph').innerText = "7.2";
-            document.getElementById('val-turb').innerText = "1.6";
-            document.getElementById('val-odor').innerText = "0%";
-            alert("ระบบบำบัดเสร็จสิ้น!");
-        }, 7000);
-    }
-</script>
-</body>
-</html>
+                        <tr><td class="py-2 text-slate-500">--:--</td><td class="py-2 text-slate
+                                                                          
