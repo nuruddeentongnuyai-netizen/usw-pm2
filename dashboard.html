@@ -43,7 +43,6 @@
                     </button>
                 </div>
             </div>
-
             <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
                 <h2 class="text-lg font-semibold mb-6 text-slate-700">2. แอนิเมชันห้องกรองเครื่องบำบัด</h2>
                 <div class="flex justify-between items-end h-40 bg-slate-100 rounded-2xl p-6 mb-6">
@@ -59,28 +58,22 @@
             <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm"><div><p class="text-xs text-slate-400">ค่า pH</p><p id="val-ph" class="text-2xl font-bold text-slate-800">0.0</p></div></div>
             <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm"><div><p class="text-xs text-slate-400">ความขุ่น (NTU)</p><p id="val-turb" class="text-2xl font-bold text-slate-800">0</p></div></div>
             <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm"><div><p class="text-xs text-slate-400">ดัชนีกลิ่นเหม็น</p><p id="val-odor" class="text-2xl font-bold text-slate-800">0%</p></div></div>
-
             <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 shadow-md mt-6 text-white h-64 overflow-y-auto">
                 <h3 class="text-sm font-semibold mb-3">📋 ประวัติบันทึกการทำงาน</h3>
-                <table class="w-full text-xs text-left">
-                    <tbody id="log-table">
-                        </tbody>
-                </table>
+                <table class="w-full text-xs text-left"><tbody id="log-table"></tbody></table>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    // ฟังก์ชันบันทึกเวลาแบบเรียลไทม์และเก็บข้อมูลไว้ทั้งหมด
+    // ฟังก์ชัน Log ไม่กระทบปุ่มอื่น
     function addLog(message, colorClass) {
         const logTable = document.getElementById('log-table');
-        const now = new Date();
-        const timeString = now.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-        
+        const now = new Date().toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
         const row = document.createElement('tr');
-        row.innerHTML = `<td class="py-1 text-slate-400 pr-2">${timeString}</td><td class="py-1 ${colorClass}">${message}</td>`;
-        logTable.prepend(row); // ข้อมูลใหม่ขึ้นบนสุด
+        row.innerHTML = `<td class="py-1 text-slate-400 pr-2">${now}</td><td class="py-1 ${colorClass}">${message}</td>`;
+        logTable.prepend(row);
     }
 
     function selectWater(el, ph, turb, odor, name) {
@@ -93,10 +86,18 @@
     }
 
     function startSystem() {
-        addLog("เริ่มกระบวนการบำบัด...", "text-blue-400");
+        addLog("เริ่มการบำบัด...", "text-blue-400");
         document.getElementById('barA').style.height = '85%';
         document.getElementById('barB').style.height = '70%';
         document.getElementById('barC').style.height = '95%';
-        
-        // บันทึกเวลาตามขั้นตอน
-        setTimeout(() =>
+        setTimeout(() => addLog("ระบบคาร์บอนทำงาน...", "text-teal-300"), 2000);
+        setTimeout(() => {
+            addLog("บำบัดสำเร็จ", "text-green-400");
+            document.getElementById('val-ph').innerText = "7.2";
+            document.getElementById('val-turb').innerText = "1.6";
+            document.getElementById('val-odor').innerText = "0%";
+        }, 7000);
+    }
+</script>
+</body>
+</html>
