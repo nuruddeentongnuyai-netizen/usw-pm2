@@ -7,7 +7,21 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Prompt', sans-serif; }
+        body { font-family: 'Prompt', sans-serif; margin: 0; padding: 0; }
+        
+        /* สไตล์นี้จะบังคับให้รูปแสดงผลเป็นพื้นหลังแน่นอน */
+        .hero-industrial {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1581092160607-ee22821ee8f7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: calc(100vh - 73px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
@@ -19,7 +33,7 @@
                 <ul class="flex items-center space-x-6 text-sm font-medium text-gray-700">
                     <li><a href="index.html" class="text-blue-700 border-b-2 border-blue-700 pb-1">หน้าแรก</a></li>
                     <li><a href="features.html" class="hover:text-blue-600 transition">คุณสมบัติ</a></li>
-                    <li><a href="products.html" class="hover:text-blue-600 transition">สินค้าของพวกเรา</a></li>
+                    <li><a href="products.html" class="hover:text-blue-600 transition">สินค้า</a></li>
                     <li><a href="about.html" class="hover:text-blue-600 transition">เกี่ยวกับ</a></li>
                     <li><a href="contact.html" class="hover:text-blue-600 transition">ติดต่อเรา</a></li>
                     <li><a href="login.html" class="bg-blue-800 text-white px-4 py-2 rounded-md hover:bg-blue-900 transition">เข้าสู่ระบบ</a></li>
@@ -28,20 +42,11 @@
         </div>
     </header>
 
-    <main class="relative flex-grow flex items-center justify-center overflow-hidden h-[calc(100vh-73px)]">
-        <!-- Overlay Layer for Text Readability -->
-        <div class="absolute inset-0 bg-black/50 z-10"></div>
-        
-        <!-- Industrial Factory Background Image (Clean Image, No Text) -->
-        <img src="https://images.unsplash.com/photo-1565435035227-2c93d9b4b040?auto=format&fit=crop&w=1920&q=80" 
-             class="absolute inset-0 w-full h-full object-cover" 
-             alt="Industrial Factory Background"
-             onerror="this.src='https://placehold.co/1600x900/1e293b/ffffff?text=EcoPure+Industrial'">
-        
-        <!-- Hero Content -->
-        <div class="relative z-20 text-center px-6 text-white max-w-3xl">
+    <!-- ใช้คลาส .hero-industrial แทนการใช้ img tag เพื่อป้องกันรูปไม่ขึ้น -->
+    <main class="hero-industrial">
+        <div class="text-center px-6 text-white max-w-3xl">
             <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">เทคโนโลยีบำบัดน้ำเสีย เพื่ออนาคตที่ยั่งยืน</h1>
-            <p class="text-lg md:text-xl mb-8 font-light">ระบบมอนิเตอร์และบริหารจัดการน้ำเสียประสิทธิภาพสูง พร้อมให้คุณควบคุมได้ทุกที่ทุกเวลา</p>
+            <p class="text-lg md:text-xl mb-8 font-light">เครื่องบำบัดน้ำเสียประสิทธิภาพสูง ประหยัดพลังงาน เหมาะสำหรับโรงงานอุตสาหกรรมและชุมชน</p>
             <a href="contact.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition duration-300">เริ่มใช้งานระบบ</a>
         </div>
     </main>
