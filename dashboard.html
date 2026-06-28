@@ -13,7 +13,6 @@
 <body class="p-6">
 
 <div class="max-w-6xl mx-auto">
-    <!-- Header -->
     <div class="flex justify-between items-end mb-8">
         <div>
             <h1 class="text-3xl font-bold text-slate-800">Smart Water Monitor</h1>
@@ -26,13 +25,10 @@
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <!-- Main Panel -->
         <div class="lg:col-span-2 space-y-6">
-            <!-- Source Selection -->
             <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
                 <h2 class="text-lg font-semibold mb-4 text-slate-700">1. เลือกแหล่งกำเนิดน้ำเสีย</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <!-- เพิ่มรายการนี้ -->
                     <button onclick="selectWater(this, 5.6, 155, 75)" class="source-card text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-blue-400 transition">
                         <p class="font-bold">🏠 น้ำเสียจากครัวเรือน</p>
                         <p class="text-xs text-slate-400">pH: 5.6 | ความขุ่น: 155 NTU | กลิ่น: 75%</p>
@@ -52,18 +48,25 @@
                 </div>
             </div>
 
-            <!-- Filter Animation -->
             <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
-                <h2 class="text-lg font-semibold mb-6 text-slate-700">2. แอนิเมชันห้องกรอง (Physical Filter Assembly)</h2>
+                <h2 class="text-lg font-semibold mb-6 text-slate-700">2. แอนิเมชันห้องกรองเครื่องบำบัด (Physical Filter Assembly)</h2>
                 <div class="flex justify-between items-end h-48 bg-slate-50 rounded-2xl p-6">
-                    <div class="text-center w-24"><div class="h-32 bg-slate-200 w-full rounded-xl relative overflow-hidden"><div id="barA" class="filter-bar absolute bottom-0 w-full bg-slate-500 h-0"></div></div><p class="text-xs mt-3 font-bold text-slate-600">SEDIMENT</p></div>
-                    <div class="text-center w-24"><div class="h-32 bg-slate-200 w-full rounded-xl relative overflow-hidden"><div id="barB" class="filter-bar absolute bottom-0 w-full bg-teal-400 h-0"></div></div><p class="text-xs mt-3 font-bold text-slate-600">CARBON</p></div>
-                    <div class="text-center w-24"><div class="h-32 bg-slate-200 w-full rounded-xl relative overflow-hidden"><div id="barC" class="filter-bar absolute bottom-0 w-full bg-blue-500 h-0"></div></div><p class="text-xs mt-3 font-bold text-slate-600">UV / OUT</p></div>
+                    <div class="text-center w-24">
+                        <div class="h-32 bg-slate-200 w-full rounded-xl relative overflow-hidden"><div id="barA" class="filter-bar absolute bottom-0 w-full bg-slate-500 h-0"></div></div>
+                        <p class="text-xs mt-3 font-bold text-slate-600">SEDIMENT<br><span class="font-normal">ดักกรองหยาบ</span></p>
+                    </div>
+                    <div class="text-center w-24">
+                        <div class="h-32 bg-slate-200 w-full rounded-xl relative overflow-hidden"><div id="barB" class="filter-bar absolute bottom-0 w-full bg-teal-400 h-0"></div></div>
+                        <p class="text-xs mt-3 font-bold text-slate-600">CARBON<br><span class="font-normal">ลดสี-ดูดซับกลิ่น</span></p>
+                    </div>
+                    <div class="text-center w-24">
+                        <div class="h-32 bg-slate-200 w-full rounded-xl relative overflow-hidden"><div id="barC" class="filter-bar absolute bottom-0 w-full bg-blue-500 h-0"></div></div>
+                        <p class="text-xs mt-3 font-bold text-slate-600">UV / OUT<br><span class="font-normal">ปรับ pH - ฆ่าเชื้อ UV</span></p>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Telemetry Panel -->
         <div class="space-y-4">
             <h2 class="text-lg font-semibold text-slate-700 mb-2">3. แผงวัดค่าข้อมูล (Telemetry)</h2>
             <div class="bg-white p-5 rounded-2xl border border-slate-100 flex justify-between items-center">
@@ -74,9 +77,6 @@
             </div>
             <div class="bg-white p-5 rounded-2xl border border-slate-100 flex justify-between items-center">
                 <div><p class="text-xs text-slate-400">ดัชนีกลิ่นเหม็น</p><p id="val-odor" class="text-2xl font-bold">0%</p></div>
-            </div>
-            <div class="bg-white p-5 rounded-2xl border border-slate-100 flex justify-between items-center">
-                <div><p class="text-xs text-slate-400">อุณหภูมิ (°C)</p><p class="text-2xl font-bold text-slate-800">25.5</p></div>
             </div>
         </div>
     </div>
