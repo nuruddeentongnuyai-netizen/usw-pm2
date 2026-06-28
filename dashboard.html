@@ -2,77 +2,79 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Water Monitor Dashboard | EcoPure</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>body { font-family: 'Sarabun', sans-serif; background: #f8fafc; }</style>
-    <script>
-        // ระบบความปลอดภัย: ถ้าไม่ได้ล็อกอิน ให้เด้งไปหน้า login.html
-        if (localStorage.getItem('isLoggedIn') !== 'true') {
-            window.location.href = 'login.html';
-        }
-    </script>
 </head>
-<body class="p-4 md:p-10">
+<body class="p-4 lg:p-8">
 
-    <div class="max-w-6xl mx-auto bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
-        <div class="flex flex-col md:flex-row justify-between items-center mb-10 border-b pb-6">
+    <div class="max-w-7xl mx-auto bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-slate-200">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
             <div>
                 <h1 class="text-2xl font-bold text-slate-800">Smart Water Monitor Dashboard</h1>
-                <p class="text-slate-500">ระบบจำลองเครื่องตรวจสอบคุณภาพน้ำและถังวิเคราะห์ฟิสิกส์-เคมี</p>
+                <p class="text-slate-500 text-sm">ระบบจำลองเครื่องตรวจสอบคุณภาพน้ำและถังวิเคราะห์ฟิสิกส์-เคมี ยูนิตประมวลผล IoT</p>
             </div>
-            <button onclick="logout()" class="mt-4 md:mt-0 bg-red-500 text-white px-6 py-2 rounded-xl font-bold hover:bg-red-600 transition">ออกจากระบบ</button>
+            <div class="flex gap-3">
+                <button class="bg-red-500 text-white px-4 py-2 rounded-lg font-bold text-sm hover:bg-red-600">🛑 ปิดเครื่องบำบัด (Stop / Off)</button>
+                <button class="bg-amber-400 text-white px-4 py-2 rounded-lg font-bold text-sm hover:bg-amber-500">⏸ หยุดชั่วคราว (Pause)</button>
+            </div>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div class="lg:col-span-2 space-y-8">
+            <div class="lg:col-span-2 space-y-6">
                 <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                    <h3 class="font-bold text-slate-800 mb-6">2. แอนิเมชันห้องกรองเครื่องบำบัด (Physical Filter Assembly)</h3>
-                    <div class="flex justify-between items-center px-4">
-                        <div class="text-center w-24">
-                            <div class="h-32 bg-slate-200 rounded-lg relative overflow-hidden flex items-end">
-                                <div class="w-full bg-blue-300 animate-pulse h-1/2"></div>
+                    <h3 class="font-bold text-slate-800 mb-4">2. แอนิเมชันห้องกรองเครื่องบำบัด (Physical Filter Assembly)</h3>
+                    <div class="flex justify-between items-center bg-white p-6 rounded-xl border border-slate-200">
+                        <div class="text-center w-20">
+                            <div class="h-24 bg-slate-100 rounded-lg border-2 border-slate-200 relative overflow-hidden flex items-end">
+                                <div id="barA" class="w-full bg-slate-400 transition-all duration-1000 h-1/4"></div>
                             </div>
-                            <p class="text-[10px] font-bold mt-2">CHAMBER A</p>
+                            <p class="text-[9px] font-bold mt-2">CHAMBER A: SEDIMENT</p>
                         </div>
-                        <div class="animate-bounce text-blue-500 font-bold">→</div>
-                        <div class="text-center w-24">
-                            <div class="h-32 bg-slate-200 rounded-lg relative overflow-hidden flex items-end">
-                                <div class="w-full bg-blue-400 animate-pulse h-2/3 delay-500"></div>
+                        <div class="h-1 flex-1 bg-amber-500 mx-2 animate-pulse"></div>
+                        <div class="text-center w-20">
+                            <div class="h-24 bg-slate-100 rounded-lg border-2 border-slate-200 relative overflow-hidden flex items-end">
+                                <div id="barB" class="w-full bg-slate-500 transition-all duration-1000 h-1/2"></div>
                             </div>
-                            <p class="text-[10px] font-bold mt-2">CHAMBER B</p>
+                            <p class="text-[9px] font-bold mt-2">CHAMBER B: CARBON</p>
                         </div>
-                        <div class="animate-bounce text-blue-500 font-bold">→</div>
-                        <div class="text-center w-24">
-                            <div class="h-32 bg-slate-200 rounded-lg relative overflow-hidden flex items-end">
-                                <div class="w-full bg-blue-500 animate-pulse h-full delay-1000"></div>
+                        <div class="h-1 flex-1 bg-slate-300 mx-2"></div>
+                        <div class="text-center w-20">
+                            <div class="h-24 bg-slate-100 rounded-lg border-2 border-slate-200 relative overflow-hidden flex items-end">
+                                <div id="barC" class="w-full bg-blue-500 transition-all duration-1000 h-0"></div>
                             </div>
-                            <p class="text-[10px] font-bold mt-2">CHAMBER C</p>
+                            <p class="text-[9px] font-bold mt-2">CHAMBER C: UV / OUT</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="space-y-4">
-                <h3 class="font-bold text-slate-800">3. แผงวัดค่าข้อมูลทางวิทยาศาสตร์</h3>
-                <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
-                    <p class="text-sm text-slate-500">ค่าน้ำเข้า (pH)</p>
-                    <p class="text-2xl font-bold text-teal-600">7.2 <span class="text-sm font-normal text-slate-400">pH</span></p>
-                </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
-                    <p class="text-sm text-slate-500">ความขุ่น (Turbidity)</p>
-                    <p class="text-2xl font-bold text-blue-600">4.0 <span class="text-sm font-normal text-slate-400">NTU</span></p>
+                <h3 class="font-bold text-slate-800">3. แผงวัดค่าข้อมูล (Telemetry)</h3>
+                <div class="space-y-3">
+                    <div class="bg-orange-50 p-4 rounded-xl border border-orange-100">
+                        <p class="text-xs text-orange-600 font-bold">ค่าความเป็นกรด-ด่าง (pH)</p>
+                        <p class="text-xl font-bold">5.6 <span class="text-xs font-normal">pH</span></p>
+                    </div>
+                    <div class="bg-yellow-50 p-4 rounded-xl border border-yellow-100">
+                        <p class="text-xs text-yellow-600 font-bold">ความขุ่น (Turbidity)</p>
+                        <p class="text-xl font-bold">155.0 <span class="text-xs font-normal">NTU</span></p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        function logout() {
-            localStorage.removeItem('isLoggedIn');
-            window.location.href = 'login.html';
-        }
+        // จำลองสถานะการกรองให้แสดงผลตามตัวอย่าง
+        window.onload = () => {
+            setTimeout(() => {
+                document.getElementById('barA').style.height = '75%';
+                document.getElementById('barB').style.height = '50%';
+                document.getElementById('barC').style.height = '20%';
+            }, 500);
+        };
     </script>
 </body>
 </html>
