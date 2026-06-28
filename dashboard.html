@@ -6,7 +6,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Kanit', sans-serif; background: #f8fafc; }
+        /* ปรับพื้นหลังหลักของหน้าเว็บเป็นสีเทาอ่อน */
+        body { font-family: 'Kanit', sans-serif; background-color: #f1f5f9; }
         .filter-bar { transition: height 7s ease-in-out; }
     </style>
 </head>
@@ -19,7 +20,7 @@
             <p class="text-slate-500">ระบบตรวจสอบและบำบัดน้ำเสียอัจฉริยะ</p>
         </div>
         <div class="flex gap-3">
-            <button onclick="location.reload()" class="bg-rose-50 text-rose-600 px-6 py-2 rounded-xl font-semibold border border-rose-100 hover:bg-rose-100 transition">🛑 ปิดระบบ</button>
+            <button onclick="location.reload()" class="bg-white text-rose-600 px-6 py-2 rounded-xl font-semibold border border-rose-200 hover:bg-rose-50 transition">🛑 ปิดระบบ</button>
             <button onclick="startSystem()" class="bg-blue-600 text-white px-8 py-2 rounded-xl font-semibold shadow-md hover:bg-blue-700 transition">▶ เริ่มการบำบัด</button>
         </div>
     </div>
@@ -29,16 +30,16 @@
             <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
                 <h2 class="text-lg font-semibold mb-4 text-slate-700">1. เลือกแหล่งกำเนิดน้ำเสีย</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <button onclick="selectWater(this, 5.6, 155, 75, 'น้ำเสียจากครัวเรือน (Graywater)', 'พบสารแขวนลอยและแอมโมเนียตกค้าง')" class="source-card text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-blue-400 hover:bg-blue-50 transition">
+                    <button onclick="selectWater(this, 5.6, 155, 75, 'น้ำเสียจากครัวเรือน (Graywater)', 'พบสารแขวนลอยและแอมโมเนียตกค้าง')" class="source-card text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-blue-400 hover:bg-slate-50 transition">
                         <p class="font-bold text-slate-700">🏠 น้ำเสียจากครัวเรือน</p>
                     </button>
-                    <button onclick="selectWater(this, 6.3, 85, 45, 'บ่อพักน้ำโรงเรียน', 'น้ำขังเน่าเสียจากใบไม้และเศษอาหาร')" class="source-card text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-blue-400 hover:bg-blue-50 transition">
+                    <button onclick="selectWater(this, 6.3, 85, 45, 'บ่อพักน้ำโรงเรียน', 'น้ำขังเน่าเสียจากใบไม้และเศษอาหาร')" class="source-card text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-blue-400 hover:bg-slate-50 transition">
                         <p class="font-bold text-slate-700">🏫 น้ำขังเน่าเสียในบ่อโรงเรียน</p>
                     </button>
-                    <button onclick="selectWater(this, 5.0, 210, 30, 'น้ำระบายจากแปลงเกษตร', 'มีการปนเปื้อนปุ๋ยและสารเคมี')" class="source-card text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-blue-400 hover:bg-blue-50 transition">
+                    <button onclick="selectWater(this, 5.0, 210, 30, 'น้ำระบายจากแปลงเกษตร', 'มีการปนเปื้อนปุ๋ยและสารเคมี')" class="source-card text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-blue-400 hover:bg-slate-50 transition">
                         <p class="font-bold text-slate-700">🌱 น้ำระบายจากแปลงเกษตร</p>
                     </button>
-                    <button onclick="selectWater(this, 5.9, 360, 90, 'น้ำคลองในเมือง', 'น้ำเสียจากท่อระบายน้ำใจกลางเมือง')" class="source-card text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-blue-400 hover:bg-blue-50 transition">
+                    <button onclick="selectWater(this, 5.9, 360, 90, 'น้ำคลองในเมือง', 'น้ำเสียจากท่อระบายน้ำใจกลางเมือง')" class="source-card text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-blue-400 hover:bg-slate-50 transition">
                         <p class="font-bold text-slate-700">🚣 น้ำคลองระบายน้ำใจกลางเมือง</p>
                     </button>
                 </div>
@@ -47,9 +48,9 @@
             <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
                 <h2 class="text-lg font-semibold mb-6 text-slate-700">2. แอนิเมชันห้องกรองเครื่องบำบัด</h2>
                 <div class="flex justify-between items-end h-40 bg-slate-100 rounded-2xl p-6 mb-6">
-                    <div class="text-center w-24"><div class="h-24 bg-slate-200 w-full rounded-xl relative overflow-hidden"><div id="barA" class="filter-bar absolute bottom-0 w-full bg-gradient-to-t from-slate-600 to-slate-400 h-0"></div></div><p class="text-xs mt-3 font-bold text-slate-700">SEDIMENT</p></div>
-                    <div class="text-center w-24"><div class="h-24 bg-slate-200 w-full rounded-xl relative overflow-hidden"><div id="barB" class="filter-bar absolute bottom-0 w-full bg-gradient-to-t from-teal-600 to-teal-400 h-0"></div></div><p class="text-xs mt-3 font-bold text-slate-700">CARBON</p></div>
-                    <div class="text-center w-24"><div class="h-24 bg-slate-200 w-full rounded-xl relative overflow-hidden"><div id="barC" class="filter-bar absolute bottom-0 w-full bg-gradient-to-t from-blue-600 to-blue-400 h-0"></div></div><p class="text-xs mt-3 font-bold text-slate-700">UV / OUT</p></div>
+                    <div class="text-center w-24"><div class="h-24 bg-slate-200 w-full rounded-xl relative overflow-hidden"><div id="barA" class="filter-bar absolute bottom-0 w-full bg-slate-500 h-0"></div></div><p class="text-xs mt-3 font-bold text-slate-700">SEDIMENT</p></div>
+                    <div class="text-center w-24"><div class="h-24 bg-slate-200 w-full rounded-xl relative overflow-hidden"><div id="barB" class="filter-bar absolute bottom-0 w-full bg-teal-400 h-0"></div></div><p class="text-xs mt-3 font-bold text-slate-700">CARBON</p></div>
+                    <div class="text-center w-24"><div class="h-24 bg-slate-200 w-full rounded-xl relative overflow-hidden"><div id="barC" class="filter-bar absolute bottom-0 w-full bg-blue-500 h-0"></div></div><p class="text-xs mt-3 font-bold text-slate-700">UV / OUT</p></div>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                     <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><p class="text-xs font-bold text-slate-500 mb-1">ข้อมูลขาเข้า (Input)</p><p id="desc-input" class="text-sm text-slate-700">กรุณาเลือกแหล่งน้ำเสีย</p></div>
@@ -60,11 +61,11 @@
 
         <div class="space-y-4">
             <h2 class="text-lg font-semibold text-slate-700 mb-2">3. แผงวัดค่าข้อมูล</h2>
-            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm"><div><p class="text-xs text-slate-400">ค่า pH</p><p id="val-ph" class="text-2xl font-bold text-slate-800">0.0</p></div></div>
-            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm"><div><p class="text-xs text-slate-400">ความขุ่น (NTU)</p><p id="val-turb" class="text-2xl font-bold text-slate-800">0</p></div></div>
-            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm"><div><p class="text-xs text-slate-400">ดัชนีกลิ่นเหม็น</p><p id="val-odor" class="text-2xl font-bold text-slate-800">0%</p></div></div>
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm"><div><p class="text-xs text-slate-400">ค่า pH</p><p id="val-ph" class="text-2xl font-bold">0.0</p></div></div>
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm"><div><p class="text-xs text-slate-400">ความขุ่น (NTU)</p><p id="val-turb" class="text-2xl font-bold">0</p></div></div>
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm"><div><p class="text-xs text-slate-400">ดัชนีกลิ่นเหม็น</p><p id="val-odor" class="text-2xl font-bold">0%</p></div></div>
 
-            <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 shadow-lg mt-6 text-white">
+            <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 shadow-md mt-6 text-white">
                 <h3 class="text-sm font-semibold mb-3">📋 บันทึกการกรองล่าสุด</h3>
                 <table class="w-full text-xs text-left">
                     <tbody id="log-table">
