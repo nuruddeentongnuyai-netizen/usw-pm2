@@ -16,9 +16,13 @@
                 <p class="text-slate-500 text-sm">ระบบจำลองเครื่องตรวจสอบคุณภาพน้ำและถังวิเคราะห์ฟิสิกส์-เคมี</p>
             </div>
             <div class="flex gap-3">
-                <button onclick="stopSimulation()" class="bg-red-500 text-white px-4 py-2 rounded-lg font-bold text-sm hover:bg-red-600">🛑 ปิดเครื่องบำบัด</button>
-                <button onclick="pauseSimulation()" class="bg-amber-400 text-white px-4 py-2 rounded-lg font-bold text-sm hover:bg-amber-500">⏸ หยุดชั่วคราว</button>
+                <button id="powerBtn" onclick="togglePower()" class="bg-red-500 text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-red-600">🛑 ปิดเครื่องบำบัด</button>
+                <button id="pauseBtn" onclick="togglePause()" class="bg-amber-400 text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-amber-500">⏸ หยุดชั่วคราว</button>
             </div>
+        </div>
+
+        <div id="statusBadge" class="inline-block px-4 py-1 mb-6 rounded-full text-sm font-bold bg-green-100 text-green-700">
+            🟢 สถานะ: กำลังทำงานปกติ
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -26,13 +30,13 @@
                 <div>
                     <h3 class="font-bold text-slate-800 mb-4">1. เลือกแหล่งกำเนิดน้ำเสีย</h3>
                     <div id="selector" class="space-y-4">
-                        <div onclick="selectSource(this, 5.6, 155, 75)" class="cursor-pointer border-2 border-blue-600 bg-blue-50 p-4 rounded-xl">
+                        <div onclick="selectSource(this, 5.6, 155)" class="cursor-pointer border-2 border-blue-600 bg-blue-50 p-4 rounded-xl">
                             <span class="font-bold">🏠 น้ำเสียจากครัวเรือน (Graywater)</span>
-                            <p class="text-xs text-slate-500">น้ำเสียหยาบจากซักล้าง ล้างจาน</p>
+                            <p class="text-xs text-slate-500">pH: 5.6 | ความขุ่น: 155 NTU</p>
                         </div>
-                        <div onclick="selectSource(this, 4.2, 480, 98)" class="cursor-pointer border border-slate-200 p-4 rounded-xl hover:border-blue-300">
+                        <div onclick="selectSource(this, 4.2, 480)" class="cursor-pointer border border-slate-200 p-4 rounded-xl hover:border-blue-300">
                             <span class="font-bold">🍳 น้ำทิ้งร้านอาหารปนเปื้อนไขมัน</span>
-                            <p class="text-xs text-slate-500">เศษอาหารและน้ำล้างเครื่องปรุงรสเข้มข้น</p>
+                            <p class="text-xs text-slate-500">pH: 4.2 | ความขุ่น: 480 NTU</p>
                         </div>
                     </div>
                 </div>
@@ -67,18 +71,38 @@
     </div>
 
     <script>
-        function selectSource(el, ph, turb, odor) {
+        let isRunning = true;
+        let isPaused = false;
+
+        function selectSource(el, ph, turb) {
             document.querySelectorAll('#selector > div').forEach(div => div.className = "cursor-pointer border border-slate-200 p-4 rounded-xl hover:border-blue-300");
             el.className = "cursor-pointer border-2 border-blue-600 bg-blue-50 p-4 rounded-xl";
             document.getElementById('phDisplay').innerText = ph;
             document.getElementById('turbDisplay').innerText = turb;
         }
+
+        function togglePower() {
+            isRunning = !isRunning;
+            const btn = document.getElementById('powerBtn');
+            const badge = document.getElementById('statusBadge');
+            btn.innerHTML = isRunning ? "🛑 ปิดเครื่องบำบัด" : "▶ เปิดเครื่องบำบัด";
+            badge.innerText = isRunning ? "🟢 สถานะ: กำลังทำงานปกติ" : "🔴 สถานะ: ปิดเครื่อง";
+            badge.className = isRunning ? "inline-block px-4 py-1 mb-6 rounded-full text-sm font-bold bg-green-100 text-green-700" : "inline-block px-4 py-1 mb-6 rounded-full text-sm font-bold bg-red-100 text-red-700";
+        }
+
+        function togglePause() {
+            if(!isRunning) return;
+            isPaused = !isPaused;
+            document.getElementById('pauseBtn').innerText = isPaused ? "▶ เล่นต่อ" : "⏸ หยุดชั่วคราว";
+            document.getElementById('statusBadge').innerText = isPaused ? "🟡 สถานะ: หยุดพักชั่วคราว" : "🟢 สถานะ: กำลังทำงานปกติ";
+        }
+
         function startSimulation() {
+            if(!isRunning || isPaused) return;
             document.getElementById('barA').style.height = '80%';
             document.getElementById('barB').style.height = '60%';
             document.getElementById('barC').style.height = '100%';
         }
-        function stopSimulation() { location.reload(); }
     </script>
 </body>
 </html>
